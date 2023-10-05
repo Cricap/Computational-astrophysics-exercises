@@ -43,7 +43,7 @@ print*,'Period (yr) = ',period/years, 2.*pi*r
 ncicli=0
 do while (time <= 2*period)
 
- ncilcli=ncicli+1
+ ncilli=ncicli+1
 
  time=time+dt
  r=sqrt(x**2+y**2)
