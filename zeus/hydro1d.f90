@@ -6,7 +6,7 @@
 MODULE DATA
 integer :: N, i
 real*8 :: pi,cmpc,cmkpc,yr,kbol,mu,mp
-parameter (N=101) 
+parameter (N=1001) 
 parameter(pi=3.141592)
 parameter(cmpc=3.085d18)
 parameter(cmkpc=1000.*cmpc)
@@ -36,7 +36,8 @@ real*8, EXTERNAL :: Cool
 
 xmin=0.
 xmax=1.
-
+print*,"Determine xmax"
+read(*,*)xmax
 !GRIGLIA "a"
 do i=1,N
 	xa(i)= xmin+(xmax-xmin)*(i-1.)/(N-1.)
@@ -68,8 +69,10 @@ close(20)
 1001 format(4(1pe12.4))
 
 !DEFINIZIONE FATTORI DI SCALA METRICI 
-
 sdr=0    !! this parameter selects the type of coordinates: 0 = Cartesian
+print*,"Give type of coordinates, 0 for cartesian 1 for spherical"
+read(*,*)sdr
+
 
 if (sdr==0) then  !! Cartesian !!
 
@@ -113,20 +116,22 @@ end if
 
 !IMPLEMENTAZIONE CONDIZIONI INIZIALI
 
- gam=1.4
+ gam=5./3.
  cv=1.99d8    !! warning: this is right for gam = 5/3 !!
  t=0.
  tmax=0.245
+	print*,"determine tmax"
+	read(*,*)tmax
  c2=3.
  cfl=0.5
 
 do i=1, N
-        if(xa(i).le.0.5)then
-          d(i)=1.0
-          p(i)=1.0
+        if(xa(i).le.0.5*xmax)then
+          d(i)=100.0
+          p(i)=0.67
         else
-          d(i)=0.125
-          p(i)=0.1
+          d(i)=1
+          p(i)=0.67e-7
         endif       
 	v(i)=0.
 	e(i)=p(i)/(gam-1.)
@@ -160,7 +165,7 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 	do i=2, N-1
 		v(i)=v(i)-dtmin*2.*(P(i)-P(i-1))/((d(i)+d(i-1))*dxb(i))	
 	end do
-	CALL BCa(v)
+	CALL BCa(v, sdr)
 
 
 !CALCOLO Q
@@ -178,7 +183,7 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 	do i=2, N-1
 		v(i)=v(i)-dtmin*2.*(q(i)-q(i-1))/((d(i)+d(i-1))*dxb(i))
 	end do
-	CALL BCa(v)
+	CALL BCa(v, sdr)
 
 	do i=2, N-1
 		e(i)=e(i)-dtmin*q(i)*(v(i+1)-v(i))/dxa(i)
@@ -189,7 +194,7 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 	do i=2,N-1
 		divV(i)=(g2a(i+1)*g31a(i+1)*v(i+1)-g2a(i)*g31a(i)*v(i))/dvl1a(i)
 	end do
-	CALL BCa(divV)
+	CALL BCa(divV, sdr)
 
 	do i=2, N-1
 		e(i)=e(i)*(1.-0.5*dtmin*(gam-1.)*divV(i))/(1.+0.5*dtmin*(gam-1.)*divV(i))
@@ -206,7 +211,7 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 		s(i)=0.5*(d(i)+d(i-1))*v(i)  !! this is at "i" !!
 	end do	
 
-	CALL BCa(s)
+	CALL BCa(s, sdr)
 
 !AGGIORNAMENTO DENSITÀ
 
@@ -229,7 +234,7 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 	do i=2, N-1
 		M(i)=dstar(i)*v(i)
 	end do
-	CALL BCa(M)
+	CALL BCa(M, sdr)
 	
 	
 	do i=2, N-1
@@ -252,7 +257,7 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 	do i=2, N
 		F2(i)=e_dstar(i)*M(i)*g2a(i)*g31a(i)				
 	end do
-	CALL BCa(F2)
+	CALL BCa(F2, sdr)
 
 	do i=2, N-1
 		e(i)=e(i)-dtmin*(F2(i+1)-F2(i))/dvl1a(i)
@@ -281,39 +286,55 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 		s(i)=s(i)-dtmin/dvl1b(i)*(F3(i)-F3(i-1))
 	end do
 
-	CALL BCa(s)
+	CALL BCa(s, sdr)
 
 	do i=2, N-1
 		v(i)=2.*s(i)/(d(i)+d(i-1))
 	end do
 
-	CALL BCa(v)
+	CALL BCa(v, sdr)
 
 enddo       !! here the "do while" ends !!
-
+if (sdr==0) then
 open(20,file='results.dat')
 
 do i=1,N  !! write the results in the file "results.dat"
-	write (20,1000) xa(i),xb(i),d(i),v(i),e(i)/d(i),p(i)
+	write (20,1000) xa(i),xb(i),d(i),v(i),e(i)/d(i),p(i), s(i)
 end do
-1000 format(6(1pe12.4))
+1000 format(7(1pe12.4))
 
 close(20)
-
+end if
+if (sdr==1) then
+	open(30,file='results2.dat')
+	
+	do i=1,N  !! write the results in the file "results.dat"
+		write (30,2000) xa(i),xb(i),d(i),v(i),e(i)/d(i),p(i)
+	end do
+	2000 format(6(1pe12.4))
+	
+	close(30)
+	end if
 END PROGRAM ZEUS
 
 
-SUBROUTINE BCa(z1) !corrette BC per velocità e momento (riflessione)
+SUBROUTINE BCa(z1, coord) !corrette BC per velocità e momento (riflessione)
 USE DATA
 IMPLICIT NONE
 real*8, dimension (N) :: z1
-
-!z1(2)=0.
-!z1(1)=-z1(3)
-!z1(N)=z1(N-1)
-z1(1)=z1(2)       !! ouflow !!
+integer :: coord
+if (coord==0) then
+	z1(1)=z1(2)       !! ouflow !!
 z1(N)=z1(N-1)
-
+end if
+if (coord == 1) then
+z1(2)=0.
+z1(1)=-z1(3)
+z1(N)=z1(N-1)     
+z1(N)=-z1(N-2)
+z1(N-1)=0
+end if
+coord=coord
 END SUBROUTINE BCa
 
 SUBROUTINE BCb(z2) ! BC di outflow tradizionali
