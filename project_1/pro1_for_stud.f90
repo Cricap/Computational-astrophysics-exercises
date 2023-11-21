@@ -439,12 +439,21 @@ enddo
       mfetheo=(2*mbcg*(0.5-ahern/(r(jmax)+a)+ahern**2/(r(jmax)+ahern)**2/2))*tnow*(4.7e-20*zfest(1)/1.4*&
       (-1/0.26*(1**(-0.26)-(time0/tnow)**(-0.26)))&
       +4.436e-20*snu/aml*zfesn*(-1/0.1*(1**(-0.1)-(time0/tnow)**(-0.1))))/msol
+
+      Fepeaksource=0.
+      do j=1, jmax
+         if (amfe(j)>=0.5*amfe(jmax)) then
+            Fepeaksource=r(j)
+            exit
+         end if
+      enddo
       write(6,3000)mfetheo
       write(6,3002)amfe(jmax)/msol,amfeiniz(jmax)/msol,amfeobs(jmax)/msol
       write(6,3003)amfe(180)/msol,amfeiniz(180)/msol,amfeobs(180)/msol
 3002  format('M_Fe(tot), M_Fein(tot) (Msol) = ',3(1pe12.4))
 3003  format('M_Fe(100kpc), M_Fein(100kpc) (Msol) = ',3(1pe12.4))
-
+write (6, 3004) Fepeaksource/cmkpc
+3004  format('Fe peak width: ', 1(1pe12.4))
 !!      print*,'TIME (Gyr) = ',time/3.156e16
 
       open(21,file='diff.dat',status='unknown')
