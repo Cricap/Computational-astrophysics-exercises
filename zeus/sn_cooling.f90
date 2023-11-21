@@ -175,7 +175,9 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 !	end do
 
 !CALCOLO DTMIN
-
+		
+		p=(gam-1.)*e
+		Temp=e/(cv*d)
         dtmin=1.d30   !! any very large value !!
         
 	do i=2, N-1
@@ -188,11 +190,7 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 
 
 
-		p=(gam-1.)*e
-		CALL BCb(p)
-		Temp=e/(cv*d)
-		Temp=max(Temp, 1.d4)
-		CALL BCb(Temp)
+		
 		
 
 !SOURCE STEP
@@ -233,19 +231,20 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 	CALL BCa(divV, sdr)
 
 	do i=2, N-1
-		e(i)=e(i)*(1.-0.5*dtmin*(gam-1.)*divV(i))/(1.+0.5*dtmin*(gam-1.)*divV(i))-dtmin*(d(i)/d0)**2*Cool(Temp(i))
+		e(i)=e(i)*(1.-0.5*dtmin*(gam-1.)*divV(i))/(1.+0.5*dtmin*(gam-1.)*divV(i))
 	end do
 	CALL BCb(e)
 
 !!  Here update T when needed (not needed for the shock tube)
 	do i=2, N-1
+		e(i)=e(i)-dtmin*(d(i)/d0)**2*Cool(Temp(i))
 		Temp(i)=max(e(i)/(cv*d(i)), 1.d4)
 		e(i)=Temp(i)*cv*d(i)
 		p(i)=(gam-1.)*e(i)
 	end do
 	CALL BCb(e)
-CALL BCb(p)
-CALL BCb(Temp)
+	CALL BCb(Temp)
+	CALL BCb(p)
 
 !!!!!!TRANSPORT STEP (use Upwind first order only)
 
@@ -302,18 +301,11 @@ CALL BCb(Temp)
 	CALL BCa(F2, sdr)
 
 	do i=2, N-1
-		e(i)=e(i)-dtmin*(F2(i+1)-F2(i))/dvl1a(i)-dtmin*(d(i)/d0)**2*Cool(Temp(i))
+		e(i)=e(i)-dtmin*(F2(i+1)-F2(i))/dvl1a(i)
 	end do
 
 	CALL BCb(e)
-	do i=2, N-1
-		Temp(i)=max(e(i)/(cv*d(i)), 1.d4)
-		e(i)=Temp(i)*cv*d(i)
-		p(i)=(gam-1.)*e(i)
-	end do
-	CALL BCb(e)
-CALL BCb(p)
-CALL BCb(Temp)
+	
 
 
 !AGGIORNAMENTO MOMENTO 
@@ -441,11 +433,11 @@ USE DATA
 IMPLICIT NONE
 Real*8:: Temp1
 		if (Temp1>0.02*1.16d7) then
-			Cool=1.d-22*(8.6*1.d-3*(Temp1*1.16d7)**(-1.7)+0.058*(Temp1*1.16d7)**0.5+0.063)
+			Cool=1.d-22*(8.6*1.d-3*(Temp1/1.16d7)**(-1.7)+0.058*(Temp1/1.16d7)**0.5+0.063)
 		else if (Temp1<=0.02*1.16d7 .AND. Temp1>=0.0017235*1.16d7) then
-			Cool=6.72*1.d-22*(Temp1*1.16d7/0.02)**0.6			
+			Cool=6.72*1.d-22*(Temp1/1.16d7/0.02)**0.6			
 		else if (Temp1<0.0017235*1.16d7) then
-			Cool=1.544*1.d-22*(Temp1/0.0017235*1.16d7)**6
+			Cool=1.544*1.d-22*(Temp1/0.0017235/1.16d7)**6
 		end if
 
 END FUNCTION Cool
