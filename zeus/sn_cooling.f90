@@ -25,8 +25,8 @@ real*8 :: d(N), e(N), v(N), P(N), s(N), Temp(N) !DENSITA', ENERGIAINTERNA, VELOC
 real*8 :: q(N) !VISCOSITA' ARTIFICIALE
 real*8 :: g2a(N), g2b(N), g31a(N), g31b(N), dvl1a(N), dvl1b(N), maxpos(1)
 real*8 :: F1(N), F2(N), F3(N), M(N),  dstar(N),  e_dstar(N), vstar(N) , e_d(N)
-real*8 :: divV(N), Ecin(N), Eter(N), Etot(N)
-real*8 :: EterIN, Rs, Rshock, ts, te
+real*8 :: divV(N)
+real*8 :: EIN, Rs, Rshock, ts, te, Ecin, Eter, Etot, Lx
 real*8 :: dtmin, tmax, t, C2, gam, Cv, k, t1, t2, t3, tcontR, tcontT, LumX, cfl, d0
 real*8 :: SedLaw !Costante per la legge di Sedov
 integer :: sdr, Num, stamp, ncicli, index, j, posmax
@@ -39,7 +39,7 @@ character(len=8) :: fmt ! format descriptor
 fmt = '(I2.2)' ! an integer of width 5 with zeros at the left
 
 !CREAZIONE DOPPIA GRIGLIA (xa e xb)
-
+Num=1
 xmin=0.
 xmax=70*cmpc
 !GRIGLIA "a"
@@ -121,9 +121,7 @@ end if
 
  gam=5./3.
  cv=1.99d8    !! warning: this is right for gam = 5/3 !!
- Eter(1)=1
- Ecin(1)=0
- Etot=1
+ 
  tmax=1
  t=0.
  c2=3.
@@ -135,6 +133,11 @@ Temp=1.d4
 v=0.
 e=cv*d*Temp
 p=(gam-1)*e
+EIN=0
+do i=2, N
+ EIN=EIN+e(i)*(4./3.)*pi*(xa(i)**3 - xa(i-1)**3) 
+end do
+
 e(2)=E0/((4./3.)*pi*xa(4)**3)
 e(3)=e(2)
 Temp(2)=e(2)/(cv*d(2))
@@ -147,8 +150,10 @@ CALL BCb(Temp)
 index=10
 ts=1.
 te=1.
-open(70, file='Sedovcooldat')
+open(70, file='Sedovcool.dat')
 open(80, file='Energycool.dat')
+
+open(90, file='Luminositycool.dat')
 do j=1, index
 	if (j>2 .and. j<7) then
 		tmax=tmax/yr/1.d4
@@ -162,21 +167,23 @@ do j=1, index
 	end if
 tmax=tmax*yr*1.d4
         ncicli=0
-		
-		
-
-do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
+		open(100, file='Coolingf.dat')		
 	
+do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
+	Eter=0
+	Ecin=0
+	Etot=0	
+	Lx=0
         ncicli=ncicli+1
 !!        if(ncicli.gt.20000) goto 1111
 
-!	do i=1, N        !! not needed for the shock tube test !!
-!		P(i)=(gam-1.)*e(i)
-!	end do
-
+	do i=1, N        !! not needed for the shock tube test !!
+		P(i)=(gam-1.)*e(i)
+	end do
+	CALL BCb(p)
 !CALCOLO DTMIN
 		
-		p=(gam-1.)*e
+		!p=(gam-1.)*e
 		Temp=e/(cv*d)
         dtmin=1.d30   !! any very large value !!
         
@@ -186,7 +193,7 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
         dtmin=cfl*dtmin
         t=t+dtmin
 		cfl=min(0.5,1.1*cfl)
-        print*,'ncicli, dtmin = ',ncicli, real(dtmin),real(t)
+        !print*,'ncicli, dtmin = ',ncicli, real(dtmin),real(t)
 
 
 
@@ -241,6 +248,7 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 		Temp(i)=max(e(i)/(cv*d(i)), 1.d4)
 		e(i)=Temp(i)*cv*d(i)
 		p(i)=(gam-1.)*e(i)
+		
 	end do
 	CALL BCb(e)
 	CALL BCb(Temp)
@@ -337,19 +345,29 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 	CALL BCa(v, sdr)
 	
 !Check energy conservation
-!
-!	do i=2, N
-!		Eter(i)=e(i)*4./3.*pi*xa(i)**3/E0
-!		Ecin(i)=0.5*d(i)*4./3.*pi*xa(i)**3*v(i)**2/E0
-!		Etot(i)=Ecin(i)+Eter(i)
-!	end do
-!if (t>te*1.d4*yr) then
-!do i=1, N
-!  write(80, 2002) t/yr, Etot(i), Eter(i), Ecin(i) 
-!
-!end do
-!te=te+1
-!end if
+	do i=2, N
+		Eter=(Eter+e(i)*(4./3.)*pi*(xa(i)**3-xa(i-1)**3))
+		Ecin=(Ecin+0.5*0.5*0.5*(4./3.)*pi*(xa(i)**3-xa(i-1)**3)*d(i)*(v(i)+v(i-1))**2)
+		if (Temp(i)>1d6) then
+		Lx=Lx+(d(i)/d0)**2*Cool(Temp(i))*(4./3.)*pi*(xa(i)**3 - xa(i-1)**3) 
+		else 
+		Lx=Lx
+		end if
+	end do
+	Eter=Eter-EIN
+	Etot=Ecin+Eter
+if (t>Num*yr .and. t<=1d3*yr) then
+write(90, 2003) t/yr, Lx
+Num=Num+100
+end if
+if (t>te*1.d3*yr) then
+
+  write(80, 2002) t/yr, Etot/E0, Eter/E0, Ecin/E0
+	
+  write(90, 2003) t/yr, Lx
+
+te=te+1
+end if
 !Sedov law	
 
 	if (t>ts*1.d3*yr) then
@@ -364,13 +382,17 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 	write(70, 2001)t/yr, Rshock/cmpc, Rs/cmpc
 	
 	
-enddo   !! here the "do while" ends !!
-  
+enddo  
+do i=1, N
+	write(100, 2004) Cool(Temp(i)), Temp(i)
+end do
+2004 format(2(1pe12.4)) !! here the "do while" ends !!
+close(100)
 if (sdr==0) then
 open(20,file='resultscool.dat')
 
 do i=1,N  !! write the results in the file "results.dat"
-	write (20,1000) xa(i),xb(i),d(i),v(i),e(i)/d(i),p(i), s(i)
+	write (20,1000) xa(i),xb(i),d(i)/d0,v(i),e(i)/d(i),p(i), s(i)
 	
 end do
 
@@ -385,7 +407,7 @@ if (sdr==1) then
 	open(30,file=filename)
 	
 	do i=1,N  !! write the results in the file "results.dat"
-		write (30,2000) xa(i)/cmpc,xb(i)/cmpc,d(i),v(i),e(i)/d(i),p(i),Temp(i)
+		write (30,2000) xa(i)/cmpc,xb(i)/cmpc,d(i)/d0,v(i),e(i)/d(i),p(i),Temp(i)
 	end do
 	2000 format(7(1pe12.4))
 	
@@ -397,7 +419,9 @@ enddo
 2001 format(3(1pe12.4))
 close(70)  
 2002 format(4(1pe12.4))
-close(80)  
+close(80) 
+2003 format(2(1pe12.4))
+close(90)  
 END PROGRAM ZEUS
 
 

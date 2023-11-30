@@ -8,17 +8,14 @@ set termopt enhanced
  unset title
  set xtic auto # set xtics automatically
  set ytic auto # set ytics automatically
-set logscale 
+set logscale
 set format y "%T"
  set format x "%T"
-f(x)=B*x**a
-B=20
-f1(x)=E*x**d
-E=20
+u(x)=exp(c)*a*x**b
 set xlabel "Log(t) (yr)"
 set ylabel "Log(R_{shock}) (pc)"
 set xrange [900: 5e5]
-fit[900:3.e4][1:]f(x) 'Sedov.dat' using 1:3 via B,a
-fit[2e5:*][1:] f1(x) 'Sedov.dat' using 1:3 via E,d
-
- plot "Sedov.dat" using 1:2 t '' w l, "Sedov.dat" u 1:3 t '' w p pt 6, f(x) lt rgb "red", f1(x) lt rgb "red"
+fit[0:3.e4][1:] u(x) "Sedovcool.dat" using 1:3 via a,b,c
+fit[3.e4:1e5][1:] u(x) "Sedovcool.dat" using 1:3 via a,b,c
+fit[1e5:*][1:] u(x) "Sedovcool.dat" using 1:3 via a,b,c
+plot "Sedovcool.dat" using 1:2 t '' w l, "Sedovcool.dat" u 1:3 t '' w p pt 6, u(x) lt rgb "red" 
