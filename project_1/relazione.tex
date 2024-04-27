@@ -8,15 +8,49 @@
 	\usepackage{amsmath}
 	\usepackage{multicol}
 	\usepackage{graphicx}
+	\usepackage{physics}
 \begin{document}
 
 \maketitle
 
 \section{Introduction}
-
-\section{Hydrostatic equilibrium}
-\subsection{Astrophysical background}
-
+Scopo+descrizione sistema
+\section{Hydrostatic configuration}
+\subsection{Physical model}
+The first part of the project is about understanding how the gas is distributed in a cluster, so to do a proper gravitational model is needed.
+We'll assume spherical symmetry, which will lead to all physical quantities depending only on $r$, the radial coordinate, which indicates the distance from the centre of the system.
+The gas is supported by thermal pressure and it's described by the hydrostatic equilibrium equation:
+\begin{equation}\label{idro_eq}
+	\derivative{P}{r}=-\frac{GM(<r)}{r^{2}}\rho_{g}(r),
+\end{equation}
+which is a I order ODE. We have that in \eqref{idro_eq} $M(<r)$ indicates the total mass contained in a radius $r$, not just the mass of the gas, while $P$ and $\rho_{g}$ refer to the pressure and the density of the gas. \\
+We have that the ICM is in equilibrium in the gravitational potential of the cluster, which is dominated by dark matter. \\
+For the density profile of the latter we will assume a $Navarro-Frenk-White$ (NFW) $profile$, which takes the following form:
+\begin{equation}\label{NFW}
+	\rho_{DM}(r)=\frac{\rho_{DM,0}}{\left(\frac{r}{r_{s}}\right)\left(1+\frac{r}{r_{s}}\right)^{2}},
+\end{equation}
+where $\rho_{DM,0}$ and $r_{s}$ are parameters which depend on the cluster mass. 
+Integrating \eqref{NFW} we can calculate the mass profile, which as an analytical solution:
+\begin{equation}\label{massDM}
+	M_{DM}(r)=\int_{0}^{r}4\pi r'^{2}\rho_{DM}(r')\dd{r'}=4\pi\rho_{DM,0}r_{s}^{3}\left[\ln\left(1+\frac{r}{r_{s}}\right)-\frac{r/r_{s}}{1+r/r_{s}}\right].
+\end{equation}
+To have a more realistic model we will also need to consider the presence of the BCG. Its stellar mass is described by the $Hernquist\; profile$:
+\begin{equation}\label{Hern}
+	M_{*}(r)=M_{BCG}\frac{r^{2}}{(r+a)^{2}},
+\end{equation}
+where $M_{BCG}$ is the mass of the elliptical central galaxy and $a$ is a scale related to the half-mass radius $r_{1/2}$: $r_{1/2}=(1+\sqrt{2})a$.\\
+Assuming the ICM is described by the perfect gas equation of state (i.e. $P=\frac{k_{B}\rho_{g}T_{g}}{\mu m_{p}}$), \eqref{idro_eq} becomes:
+\begin{equation}\label{hydroperf}
+	\derivative{\ln \rho_{g}}{r}=-\frac{GM(<r)}{r^{2}}\frac{\mu m_{p}}{k_{B}T_{g}(r)}-\derivative{\ln T_{g}}{r},
+\end{equation}
+where $T_{g}(r)$ is the gas temperature, while $\mu ,\, m_{p},$ and $k_{B}$ are constants that represent the mean molecular weight, the proton mass and the Boltzmann constant respectively.\\
+In the case of an isothermal gas and in the absence of the BCG eq.\eqref{hydroperf} has an analytical solution:
+%\begin{equation}\label{isogas}
+	\begin{gather}
+		\rho_{g}=\rho_{0}\exp\left\{-\frac{27}{2}b\left[1-\frac{\ln (1+r/r_{s})}{r/r_{s}}\right]\right\}=\rho_{0}e^{-27b/2}\left(1+\frac{r}{r_{s}}\right)^{27b/(2r/r_{s})},\\
+	with \quad b=\frac{8\pi G\mu m_{p}\rho_{DM,0}r_{s}^{2}}{27k_{B}T_{g,iso}}\notag
+	\end{gather}
+%\end{equation}
 \subsection{The simulation}
 \subsection{Results and conclusions}
 \end{document}
