@@ -1,9 +1,10 @@
-\documentclass[]{article}
+\documentclass{article}
 
 %opening
 \title{Manco il titolo mi ricordo}
 \author{Cristina Caprioglio}
 \date{2023/2024 }
+\usepackage[margin=0.75in]{geometry}
 	\usepackage{amssymb}
 	\usepackage{amsmath}
 	\usepackage{multicol}
@@ -13,7 +14,7 @@
 
 \maketitle
 
-\section{Introduction}
+\section*{Introduction}
 Scopo+descrizione sistema
 \section{Hydrostatic configuration}
 \subsection{Physical model}
@@ -52,5 +53,15 @@ In the case of an isothermal gas and in the absence of the BCG eq.\eqref{hydrope
 	\end{gather}
 %\end{equation}
 \subsection{The simulation}
+The first step is building two uniform grids, with one shifted by $\frac{1}{2}\Delta r$, where $\Delta r=r\textsubscript{j}-r\textsubscript{j-1}$. The maximum number of points in the grids is $j\textsubscript{max}=5000$, while $r$ ranges from $r\textsubscript{min}=0 Mpc$ to $r\textsubscript{max}=3 Mpc$.
+The points for the first grid are going to be
+\begin{equation}
+	r_{j}=r_{min}+\frac{j-1}{j_{max}-1}r_{max},\qquad 1\le j\le j_{max}
+\end{equation}
+so we'll use integer numbers to refer to them, while we'll use half-integers for the points in the second one.
+We'll thus need to define not only the points but also $r_{jmax+1/2}$, which we'll do as follows:
+\begin{equation}
+	aaaaa
+\end{equation}
 \subsection{Results and conclusions}
 \end{document}
