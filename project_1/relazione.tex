@@ -61,7 +61,57 @@ The points for the first grid are going to be
 so we'll use integer numbers to refer to them, while we'll use half-integers for the points in the second one.
 We'll thus need to define not only the points but also $r_{jmax+1/2}$, which we'll do as follows:
 \begin{equation}
-	aaaaa
+	\begin{cases}
+		r_{jmax+1/2}=r\textsubscript{jmax-1/2}+(r\textsubscript{jmax-1/2}-r\textsubscript{jmax-3/2})\\
+		r\textsubscript{j+1/2}=r\textsubscript{j}+\frac{r\textsubscript{j+1}-r\textsubscript{j}}{2} \qquad 1\le j\le j_{max}-1
+	\end{cases}
 \end{equation}
+Both the temperature $T$ and the density $\rho$ are centered at $r\textsubscript{j+1/2}$, while we centered the mass to $r\textsubscript{j}$.\\
+To proceed with the simulation, we first integrate numerically $\rho\textsubscript{DM}$ in order to get $M\textsubscript{DM}$.
+Assuming $ M\textsubscript{DM,1}=0$, we get the following expression:
+\begin{equation}
+	M\textsubscript{DM,j}=M\textsubscript{DM,j-1}+\rho\textsubscript{DM,j-1/2}\Delta V\textsubscript{j},
+\end{equation}
+where the j-th volume element $\Delta V\textsubscript{j}$ is given by:
+\begin{equation}
+	\Delta V\textsubscript{j}=\frac{4}{3}\pi(r^{3}_{j}-r^{3}_{j-1}).
+\end{equation}
+To check the integration we overplotted the results against the analytical solution found in \eqref{massDM}.\\
+Once obtained $M_{DM}$ we can move on to the integration of \eqref{hydroperf}. We consider three possible scenarios:
+\begin{itemize}
+	\item isothermal gas without the presence of the BCG, where we have $\derivative{\ln T_{g}}{r}=0$ and $M_{j}=M_{DM,j}$;
+	\item isothermal gas with the presence of the BCG, where we have $\derivative{\ln T_{g}}{r}=0$ and $M_{j}=M_{DM,j}+M_{*,j}$;
+	\item non-isothermal gas with the presence of the BCG, where we have $\derivative{\ln T_{g}}{r}\ne 0$ and $M_{j}=M_{DM,j}+M_{*,j}$;
+\end{itemize}
+We transform \eqref{hydroperf} from an ODE to a FDE (finite difference equation), with the derivative centered in $j$:
+\begin{equation}\label{11}
+	\frac{\ln \rho_{g,j+1/2}-\ln \rho_{g,j-1/2}}{r_{j+1/2}-r_{j-1/2}}=-\frac{\mu m_{p}}{k_{B}\overline{T}_{g,j}}\frac{GM_{j}}{r_{j}^{2}}-\frac{\ln T_{g,j+1/2}-\ln T_{g,j-1/2}}{r_{j+1/2}-r_{j-1/2}},
+\end{equation}
+where $\overline{T}_{g,j}$ is defined as $\frac{T_{g,j+1/2}-T_{g,j-1/2}}{2}$. The expression for $\ln \rho_{g,j+1/2}$ can then be easily found from \eqref{11}:
+\begin{equation}
+	\ln\rho_{g,j+1/2}=\ln\rho_{g,j-1/2}-\Delta r\frac{\mu m_{p}}{k_{B}\overline{T}_{g,j}}\frac{GM_{j}}{r_{j}^{2}}-(\ln T_{g,j+1/2}-\ln T_{g,j-1/2}).
+\end{equation}
+To conclude the setting of the simulations, the following list contains the parameters value and the temperature profiles:
+\begin{itemize}
+	\item for the NFW profile: $\rho_{DM,0}=7.35\times 10^{-26}$ g/cm$^{3}$ and $r_{s}=435.7$ kpc;
+	\item for the $Hernquist$ $ profile$: $M_{BCG}=10^{12} M_{\odot}$ and $r_{1/2}=12$kpc;
+	\item the initial condition $\rho_{g,0}$ for the gas density is: \begin{itemize}
+		\item $4.1\times 10^{-26}$g/cm$^{3}$ for the first scenario;
+		\item $8\times 10^{-26}$g/cm$^{3}$ for the second;
+		\item $1.5\times 10^{-25}$g/cm$^{3}$ for the third;
+	\end{itemize}
+	\item for both temperature pofiles we have $\mu=0.61$, while their expressions are:
+	\begin{itemize}
+		\item for the isothermal case: $T_{g}=T_{mg}=8.9\times 10^{7}$K;
+		\item for the non-isothermal one:
+		\begin{equation}
+			\frac{T_{g}}{T_{mg}}=1.35\frac{(x/0.045)^{1.9}+0.45}{(x/0.045)^{1.9}+1}\frac{1}{(1+(x/0.6)^{2})^{0.45}}
+		\end{equation}
+		where $x=r/r_{500}$, with $r_{500}\sim r_{vir}/2=1.4$Mpc.
+	\end{itemize}
+\end{itemize}
+To find the appropriate values for the initial condition of the gas density we first run the code with an initial guess with the expected order of magnitude, then we adjust rthe values in order
+to obtain a baryon fraction $f_{b}=\frac{M_{*}+M_{gas}}{M_{*}+M_{gas}+M_{DM}}$ close to the cosmic value ($\sim 0.16$) at the virial radius of the cluster ($r_{vir}\approx 2.8$ Mpc)
+
 \subsection{Results and conclusions}
 \end{document}
