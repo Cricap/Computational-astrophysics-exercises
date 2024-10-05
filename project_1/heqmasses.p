@@ -1,6 +1,7 @@
 #Script file to print masses comparison graph
 
 set autoscale # scale axes automatically
+set size square
  unset log # remove any log-scaling
  unset label # remove any previous labels
  unset xtics
@@ -10,7 +11,7 @@ set autoscale # scale axes automatically
  set ytic auto # set ytics automatically
  set format y "%T"
  set format x "%T"
- set title "Dark matter mass comparison"
+ set title "NFW and Hernquisit mass profiles comparison"
  set xlabel "Log r (kpc)"
- set ylabel "Log M (M*)" 
- plot "masse.dat" using 1:2 t '', "masse.dat" u 1:3 t ''
+ set ylabel "Log M (M_{⊙})" 
+ plot "masse.dat" using 1:3 t 'Analytical profile' w lines, "masse.dat" u 1:4 t 'Hernquisit profile' w lines

@@ -1,5 +1,6 @@
 set autoscale
 set size square
+unset key
  unset log # remove any log-scaling
  unset label # remove any previous labels
  unset xtics
@@ -9,10 +10,8 @@ set size square
  set ytic auto # set ytics automatically
  set format y "%T"
  set format x "%T"
- set title "Density profiles"
+ set title "Comparison of analytical and numerical density profiles in the isothermal without BCG case"
  set xlabel "Log r (kpc)"
  set ylabel "Log {/Symbol r} (g/cm^{3})"
- set xrange [:1e4]
- set yrange[5.3e-29:]
-
- plot "density.dat" using 1:2 t 'Isothermal' w l, "density2.dat" using 1:2 t 'Isothermal with BCG' w l, "density3.dat" using 1:2 t 'BCG and dT/dr' w l, "density.dat" using 1:3 t 'Analytical NFW' w l dt 2
+ set key at 2840, 6.45e-26
+ plot "density.dat" using 1:2 t 'Numerical' w l, "density.dat" using 1:5 t 'Analytical' w l

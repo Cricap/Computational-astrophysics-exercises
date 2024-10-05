@@ -16,9 +16,9 @@ implicit real*8 (a-h,o-z)
 real*8, dimension(jmax) :: r(jmax),rr(jmax),vol(jmax),mnfw(jmax),&
         rhost(jmax),rho(jmax),mhern(jmax),rhonfw(jmax),mdark(jmax),&
         grvnfw(jmax),lnd(jmax),tem(jmax),tem2(jmax),mgas(jmax),&
-        fbarr(jmax),fgasr(jmax), rhoreb(jmax), tempreb(jmax)
+        fbarr(jmax),fgasr(jmax), rhoreb(jmax), tempreb(jmax), rhoiso(jmax)
 real*8 :: msol,mu,mp,rmin,rmax,mvir,rvir,mbcg,ahern,lsol,h,me,&
-          ne0,alphast,alphasn,zfesn, l, lanal, kappareal, mfetheo
+          ne0,alphast,alphasn,zfesn, l, lanal, kappareal, mfetheo,b
 
 real*8, dimension(jmax) :: u(jmax),flux(jmax),ne(jmax),zfe(jmax),& 
         kappa(jmax),lturb,rhofedot(jmax),rhofe(jmax),zfest(jmax),&
@@ -90,13 +90,18 @@ mvir=1.3e15*msol
 mbcg=1.d12*msol
 ahern=12.*cmkpc/(1.+2.**(0.5))
 aml=7.5    !! this is the mass to light ratio 
-
+b=8*pi*guniv*mu*mp*rho0nfw*rs*rs/(27.*boltz*ticm)
 do j=1,jmax
    x=rr(j)/rs
    rhonfw(j)=rho0nfw/(x*(1.+x)**2)
    rhost(j)=mbcg/(2.*pi)*(ahern/rr(j))/(ahern+rr(j))**3 !!density obtained from dM*/dr divided by 4pir^2dr
 enddo
-
+if (model .eq. 1) then
+   do j=1,jmax
+      x=rr(j)/rs
+      rhoiso(j)=rho0*exp(-(27./2)*b*(1-log(1.+x)/x))
+   enddo
+end if
 open(20,file='masse.dat')
 mnfw(1)=0.   !! Navarro-Frank_White
 mhern(1)=0.
@@ -192,7 +197,7 @@ enddo
 if (model==1) then
 open(20,file='density.dat',status='unknown')
 do j=1,jmax
-   write(20,1100)rr(j)/cmkpc,rho(j),rhonfw(j),rhost(j)
+   write(20,1100)rr(j)/cmkpc,rho(j),rhonfw(j),rhost(j),rhoiso(j)
 enddo
 close(20)
 end if
