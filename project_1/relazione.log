@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.2.5)  5 OCT 2024 21:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.2.5)  6 OCT 2024 20:36
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -343,20 +343,56 @@ File: rebrho.png Graphic file (type png)
 <use rebrho.png>
 Package pdftex.def Info: rebrho.png  used on input line 156.
 (pdftex.def)             Requested size: 247.88887pt x 185.91261pt.
- [4 <./density_profiles.png (PNG copy)>] [5 <./rhoiso.png (PNG copy)> <./temprofiles.png (PNG copy)> <./rebrho.png (PNG copy)>] [6] (./relazione.aux) ) 
+ [4 <./density_profiles.png (PNG copy)>] [5 <./rhoiso.png (PNG copy)> <./temprofiles.png (PNG copy)> <./rebrho.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 197--199
+
+ []
+
+[6]
+<Z_diff_1.png, id=42, 481.8pt x 361.35pt>
+File: Z_diff_1.png Graphic file (type png)
+<use Z_diff_1.png>
+Package pdftex.def Info: Z_diff_1.png  used on input line 237.
+(pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
+<Z_diff_2.png, id=43, 481.8pt x 361.35pt>
+File: Z_diff_2.png Graphic file (type png)
+<use Z_diff_2.png>
+Package pdftex.def Info: Z_diff_2.png  used on input line 240.
+(pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
+<Z_diff_5.png, id=44, 481.8pt x 361.35pt>
+File: Z_diff_5.png Graphic file (type png)
+<use Z_diff_5.png>
+Package pdftex.def Info: Z_diff_5.png  used on input line 243.
+(pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
+<Z_source_1.png, id=45, 481.8pt x 361.35pt>
+File: Z_source_1.png Graphic file (type png)
+<use Z_source_1.png>
+Package pdftex.def Info: Z_source_1.png  used on input line 250.
+(pdftex.def)             Requested size: 227.64894pt x 170.73326pt.
+<Z_source_2.png, id=46, 481.8pt x 361.35pt>
+File: Z_source_2.png Graphic file (type png)
+<use Z_source_2.png>
+Package pdftex.def Info: Z_source_2.png  used on input line 253.
+(pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
+<Z_source_5.png, id=47, 481.8pt x 361.35pt>
+File: Z_source_5.png Graphic file (type png)
+<use Z_source_5.png>
+Package pdftex.def Info: Z_source_5.png  used on input line 256.
+(pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
+ [7] [8 <./Z_diff_1.png (PNG copy)> <./Z_diff_2.png (PNG copy)> <./Z_diff_5.png (PNG copy)>] [9 <./Z_source_1.png (PNG copy)> <./Z_source_2.png (PNG copy)> <./Z_source_5.png (PNG copy)>] (./relazione.aux) ) 
 Here is how much of TeX's memory you used:
- 5334 strings out of 478287
- 83843 string characters out of 5849290
+ 5388 strings out of 478287
+ 84699 string characters out of 5849290
  399465 words of memory out of 5000000
- 23484 multiletter control sequences out of 15000+600000
- 477457 words of font info for 60 fonts, out of 8000000 for 9000
+ 23531 multiletter control sequences out of 15000+600000
+ 477803 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,13n,77p,691b,375s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on relazione.pdf (6 pages, 400253 bytes).
+ 68i,13n,77p,698b,391s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on relazione.pdf (9 pages, 608329 bytes).
 PDF statistics:
- 105 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
+ 127 PDF objects out of 1000 (max. 8388607)
+ 71 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

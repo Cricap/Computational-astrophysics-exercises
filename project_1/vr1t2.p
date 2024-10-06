@@ -17,11 +17,11 @@ set termopt enhanced
  datafile = 'time_start.dat'
  firstrow = system('head -1 '.datafile)
  time= word(firstrow, 1)
- set label at 400, 1.3 gprintf("t= %g Gyrs", time)
+ set label at 200, 1.3 gprintf("t= %g Gyrs", time)
  datafile1='kappa.dat'
  firstrow1 = system('head -1 '.datafile1)
  kappa= word(firstrow1, 1)
- set label at 400, 2.2 gprintf("K= %g cgs", kappa)
+ set label at 200, 1.2 gprintf("D= %g cm^{2}/s", kappa)
  set key at 1000, 1.1
  set yrange [0: 1.5]
  set xrange [1:*]

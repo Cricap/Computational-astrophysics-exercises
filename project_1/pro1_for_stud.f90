@@ -18,12 +18,12 @@ real*8, dimension(jmax) :: r(jmax),rr(jmax),vol(jmax),mnfw(jmax),&
         grvnfw(jmax),lnd(jmax),tem(jmax),tem2(jmax),mgas(jmax),&
         fbarr(jmax),fgasr(jmax), rhoreb(jmax), tempreb(jmax), rhoiso(jmax)
 real*8 :: msol,mu,mp,rmin,rmax,mvir,rvir,mbcg,ahern,lsol,h,me,&
-          ne0,alphast,alphasn,zfesn, l, lanal, kappareal, mfetheo,b
+          ne0,alphast,alphasn,zfesn, l, lanal, kappareal,b
 
 real*8, dimension(jmax) :: u(jmax),flux(jmax),ne(jmax),zfe(jmax),& 
         kappa(jmax),lturb,rhofedot(jmax),rhofe(jmax),zfest(jmax),&
         amfeiniz(jmax),amfe(jmax),gradzfe(jmax),zfeobs(jmax),&
-        amfeobs(jmax),rhofeobs(jmax), diffzfe(jmax)
+        amfeobs(jmax),rhofeobs(jmax), diffzfe(jmax), mfetheo(jmax),rhotheo(jmax)
 integer :: model, version, answer
 
 
@@ -270,6 +270,7 @@ else
 end if !!zfeout !!zfeobs(j)  !! which initial zfe? !! 
    rhofe(j)=rho(j)*zfe(j)/1.4
    rhofeobs(j)=rho(j)*zfeobs(j)/1.4
+   !rhotheo(j)=rhost(j)*5.e-22*(tnow-5*1.e9*years)
 enddo
 
  do j=1,jmax
@@ -280,9 +281,11 @@ enddo
 
 amfeiniz(1)=rhofe(1)*vol(1)
 amfeobs(1)=rhofeobs(1)*vol(1)
+!rhotheo(1)=rhost(1)*vol(1)
 do j=2,jmax
    amfeiniz(j)=amfeiniz(j-1)+rhofe(j-1)*vol(j)
    amfeobs(j)=amfeobs(j-1)+rhofeobs(j-1)*vol(j)
+ !  rhotheo(j)=rhotheo(j-1)+rhost(j-1)*vol(j)
 enddo
 
 open(20,file='zfe_initial.dat')
@@ -386,6 +389,7 @@ if(version==1) goto776
 !!!    if(j.eq.5)print*,'azz ',dt,rhofe(j),dt*rhofedot(j),rhofedot(j)
     rhofe(j)=rhofe(j) + dt*rhofedot(j)
     zfe(j)=rhofe(j)/rho(j) * 1.4
+    !rhotheo(j)=rhotheo(j)+rhost(j)*5.e-22*dt
  enddo
 
 !! set the boundary conditions (outflows)
@@ -394,6 +398,8 @@ if(version==1) goto776
       zfe(jmax)=zfe(jmax-1)
       rhofe(1)=rhofe(2)
       rhofe(jmax)=rhofe(jmax-1)
+      !rhotheo(1)=rhotheo(2)
+      !rhotheo(jmax)=rhotheo(jmax-1)
 776   continue
 
 if(version==2) goto777
@@ -438,12 +444,16 @@ enddo
 !! calcola la massa di Fe al tempo finale
 
       amfe(1)=rhofe(1)*vol(1)
+      do j=1,jmax
+         mfetheo(j)=rhost(j)*vol(j)*(time0)*5.e-22
+      enddo
       do j=2,jmax
          amfe(j)=amfe(j-1)+rhofe(j-1)*vol(j)
+         
       enddo
-      mfetheo=(2*mbcg*(0.5-ahern/(r(jmax)+a)+ahern**2/(r(jmax)+ahern)**2/2))*tnow*(4.7e-20*zfest(1)/1.4*&
-      (-1/0.26*(1**(-0.26)-(time0/tnow)**(-0.26)))&
-      +4.436e-20*snu/aml*zfesn*(-1/0.1*(1**(-0.1)-(time0/tnow)**(-0.1))))/msol
+     ! mfetheo(jmax)=(2*mbcg*(0.5-ahern/(r(jmax)+ahern)+ahern**2/(r(jmax)+ahern)**2/2))*tnow*(4.7e-20*zfest(1)/1.4*&
+     ! (-1/0.26*(1**(-0.26)-(time0/tnow)**(-0.26)))&
+     ! +4.436e-20*snu/aml*zfesn*(-1/0.1*(1**(-0.1)-(time0/tnow)**(-0.1))))/msol
 
       Fepeaksource=0.
       do j=1, jmax
@@ -452,7 +462,7 @@ enddo
             exit
          end if
       enddo
-      write(6,3000)mfetheo
+      write(6,3000)mfetheo(jmax)/msol
       write(6,3002)amfe(jmax)/msol,amfeiniz(jmax)/msol,amfeobs(jmax)/msol
       write(6,3003)amfe(180)/msol,amfeiniz(180)/msol,amfeobs(180)/msol
 3002  format('M_Fe(tot), M_Fein(tot) (Msol) = ',3(1pe12.4))
@@ -463,10 +473,10 @@ write (6, 3004) Fepeaksource/cmkpc
 
       open(21,file='diff.dat',status='unknown')
       do j=2,jmax
-         write(21,3000)rr(j)/cmkpc,zfe(j)/zfesol
+         write(21,3000)rr(j)/cmkpc,zfe(j)/zfesol,r(j)/cmkpc,amfe(j)/msol,mfetheo(j)/msol
       enddo
       close(21)
-3000  format(2(1pe12.4))
+3000  format(5(1pe12.4))
 
 !! Here starts the part of the program that defines the timescale for diffusion->DO A CHECK WHETHER IT ACTUALLY WORKS CAUSE I DOUBT IT
 if (version/=1) goto 6000

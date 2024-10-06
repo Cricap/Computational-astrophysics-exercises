@@ -21,7 +21,7 @@
 Scopo+descrizione sistema
 \section{Hydrostatic configuration}
 \subsection{Physical model}
-The first part of the project is about understanding how the gas is distributed in a cluster, so to do a proper gravitational model is needed.
+The first part of the project is about understanding how the gas is distributed in a cluster, and to do so a proper gravitational model is needed.
 We'll assume spherical symmetry, which will lead to all physical quantities depending only on $r$, the radial coordinate, which indicates the distance from the centre of the system.
 The gas is supported by thermal pressure and it's described by the hydrostatic equilibrium equation:
 \begin{equation}\label{idro_eq}
@@ -172,11 +172,111 @@ $\sim 800$ kpc, which means that the gas is colder than the isothermal model and
 \section{The diffusion of Fe in the ICM}
 \subsection{Physical model}
 
+In the second part of the project we study the diffusion of iron in the ICM. Basically, the idea is that the ICM has been enriched by stars (mostly SNIa explosions but also stellar winds) to a level comparable to the ISM in the Milky Way. This means we observe mostly iron, which can be used as our metal tracer.
+The Fe abundance ranges from $0.3$ to $0.5 Z_{Fe,\odot}$, where $Z_{Fe,\odot}=0.0018$.
+What we want to find is not only the origin and the amount of metals, but also their spatial distributions. Peaked abundance profiles are a characteristic feature of clusters with cool cores, and abundance peaks are probably associated with with BCGs (see \cite{rebusco}), in which SNIa explode, injecting energy ($\sim 10^{51}$ erg each) and metals, especially iron ($\sim 0.7$ M$_{\odot}$ each).
+However, the width of the peaks is much broader than the BCG light distribution (see \textbf{INSERT CITATION}), suggesting that there is a mechanism that is transporting the metals originated from within the BCG.\\ 
+We assume that this process can be treated as diffusive, and it's produced by stochastic gas motions. Under the assumption of spherical symmetry, we have that the iron density $\rho_{Fe}$ obeys the following diffusion equation:
+\begin{equation} \label{diffeq}
+	\pdv{\rho_{Fe}}{t}=\frac{1}{1.4}\frac{1}{r^{2}}\pdv{(r^{2}D\rho_{g}\pdv{Z_{Fe}}{r})}{r}+S_{Fe}(r,t), \quad \text{with}\quad Z_{Fe}=1.4\frac{\rho_{Fe}}{\rho_{g}}
+\end{equation} 
+where $S_{Fe}(r,t)$ is the source term due to the iron injection from the central galaxy, and $D$ is the diffusion coefficient, which is of the order of $D\approx v_{t}l_{t}$ with $v_{t}$ being the typical turbolent velocity and $l_{t}$ the typical turbolent length-scale. Another useful quantity is the timescale for diffusion over a distance $L$: $\tau_{diff}\sim L^{2}/D$.\\
+As previously stated, the metals are injected in the ICM by mainly two objects: SNIa, which explode at a rate proportional to the stellar density (at least locally), which is described
+by \eqref{Hern}, and stellar winds. This latter source is proportional to the stellar density $\rho_{*}(r)=\frac{M_{BCG}}{2\pi}\frac{a}{r}\frac{1}{(r+a)^{3}}$.\\
+Taking them into consideration, the formula for the source term as a function of time and distance from the centre is:
+\begin{equation} \label{source}
+		S_{Fe}(r,t)=\rho_{*}(r)\left[\alpha_{*}(t)\frac{Z_{Fe,*}(r)}{1.4}+\alpha_{Ia}(t)\frac{M_{Fe,Ia}}{M_{Ia}}\right],
+\end{equation}
+where $Z_{Fe,*}$ is the stellar Fe abundance profile, $M_{Fe,Ia}\approx 0.74$ M$_\odot$ and $M_{Ia}\approx 1.4$ M$_\odot$ are respectively the Fe and the total mass ejected by a SNIa explosion, while 
+$\alpha_{*}$ and $\alpha_{Ia}$ are the specific mass return rate for the stellar winds and SNIa respectively, and are defined as follows:
+\begin{equation}\label{rates}
+	\begin{cases}
+		\alpha_{*}(t)=4.7\times 10^{-20}(\frac{t}{t_{now}})^{-1.26}\\
+		\alpha_{Ia}(t)=5.91\times 10^{-21} SNu(t), \quad \text{with}\quad SNu(t)=SNu(t_{now})(\frac{t}{t_{now}})^{-s}
+	\end{cases}
+\end{equation}
+where $t_{now}$ is the current cosmic time ($\approx 13.7$ Gyr), $s\sim 1.1$, and $SNu(t_{now})$ is the number of SNIa per $10^{10}$ L$_{B,\odot}$ per century, for which the observational estimates for elliptical galaxies (BCG in particular) are still quite uncertain, with values in the range $[0.05-0.5]$.\\
 
 \subsection{The simulation}
-
+The grids we adopt here are the same as the ones in the first part, with $Z_{Fe}$ centered on the second one. In order to transform \eqref{diffeq} from a PDE to a FDE we used the Forward-Time Centered Space (FTCS) method, due to the fact that diffusion is isotropic.
+Denoting as $t^{n}$ the value of time at the $n$-th iteration, and assuming a constant $D$ and no change in time for $\rho_{g}(r)$, at a generic point ($r_{j+1/2},t^{n}$) the equation for the diffusion term reads as:
+\begin{equation}\label{fdediff}
+	\frac{\rho_{Fe,j+1/2}^{n+1}-\rho_{Fe,j+1/2}^{n}}{t^{n+1}-t^{n}}=\frac{1}{1.4}\frac{f_{j+1}^{n}-f_{j}^{n}}{(r_{j+1}^{3}-r_{j}^{3})/3},
+\end{equation}
+where for a generic $f_{j}^{n}$ we have:
+\begin{equation}\label{fnj}
+	f_{j}^{n}=r_{j}^{2}D\rho_{g,j}(\pdv{Z_{Fe}}{r})^{n}_{j}=r_{j}^{2}D\rho_{g,j}\frac{Z_{Fe,j+1/2}^{n}-Z^{n}_{Fe,j-1/2}}{r_{j+1/2}-r_{j-1/2}},\quad \text{with} \quad \rho_{g,j}=\frac{1}{2}(\rho_{g,j+1/2}+\rho_{g,j-1/2}).
+\end{equation}
+As for the source term, there are no derivatives present so from a numerical point of view its treatment is fairly easy, with $S_{Fe}(r_{j+1/2},t^{n})$ being simply a function evaluated at that specific point.\\
+The time integration requires two boundary conditions at the two extremes of the grid: $\rho_{Fe}(1)=\rho_{Fe}(2)$ and $\rho_{Fe}(j_{max})=\rho_{Fe}(j_{max}-1)$.
+Another aspect to keep in mind is that the choice for the timestep is constrained. According to the Von Neumann stability analysis for the FTCS method, we have that the following inequality must hold for this method to be stable:
+\begin{equation}\label{stability}
+	\Delta t\le \frac{(\Delta r)^{2}}{2D}.
+\end{equation}
+In our case we have assumed that neither $D$ nor $\Delta r$ change with time, so we only need to calculate $\Delta t $ once, but since in the general case this isn't true we decided to add an array with the values of $D_{j}$ at each $r{j}$ and then we computed $\Delta t $ for each time cycle as:
+\begin{equation}
+	\Delta t=C\min_{j}\left\{\frac{(r_{j+1/2}-r_{j-1/2})^{2}}{2D_{j}}\right\},\quad \text{with} \quad C=0.4.
+\end{equation}
+The last thing we need to complete our setup is the initial abundance of iron. We simulated three different scenarios:
+\begin{itemize}
+	\item the initial Fe abundance is the one observed in Perseus (see \cite{rebusco}), which, rescaled by a factor $1.4$, is:
+			\begin{equation}\label{Feab}
+				Z_{Fe,obs}(r)=0.42\frac{2.2+(\frac{r}{80 kpc})^{3}}{1+(\frac{r}{80 kpc})^{3}}Z_{Fe,\odot},
+			\end{equation}
+			from which we then subtract the constant background value $Z_{Fe,b}=0.4Z_{Fe,\odot}$ (in order to isolate the Fe-peak produced by the SNIa), and we evolve in presence of only diffusion;
+	\item  $Z_{Fe}=0$ everywhere and we consider only the source term;
+	\item  $Z_{Fe}=0$ everywhere, but with both source and diffusion present.
+\end{itemize}
+We choose as our gas density profile the one corresponding to the non-isothermal model of the previous part. It's also important to notice that we consider the $Z_{Fe,*}$ to be constant and equal to the solar one in the source term.\\
+Considering $v_{t}=260 km/s$ and $l_{t}=15kpc$ and a multiplicative constant $C=0.11$ our standard value for the diffusion coefficient is $D=1.32\times 10^{29}$cm$^{2}$/s, however we do change it in some simulations.
 \subsection{Results and discussion}
-
+For all the different scenarios, we run the simulation for three different integration times: $t_{1}=1 $ Gyr, $t_{2}=2$ Gyr, and $t_{3}=5$ Gyr. Fig. \ref{fig:Zdiffonly}, \ref{fig:Zsourceonly}, and \ref{fig:Zdiffsource} show the numerical metallicity profiles determined for the diffusion-only, source-only and diffusion+source models for the three integration times.
+\begin{figure} [H]
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=0.9\linewidth]{Z_diff_1.png}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=0.9\linewidth]{Z_diff_2.png}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=0.9\linewidth]{Z_diff_5.png}
+	\end{subfigure}
+	\caption{\textit{From left to right and from top to bottom:} Fe metallicity profiles evolved in the case with only diffusion, respectively for $t_{1}=1 $ Gyr, $t_{2}=2$ Gyr, and $t_{3}=5$ Gyr. The light blue curve shows the numerical integration of \eqref{Feab}, the green curve is the same but with the subtraction of the background metallicity and the purple curve is the final profile.}
+	\label{fig:Zdiffonly}
+\end{figure}
+\begin{figure}[H]
+	\begin{subfigure}{0.50\textwidth}
+		\includegraphics[width=0.9\linewidth]{Z_source_1.png}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=0.9\linewidth]{Z_source_2.png}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\includegraphics[width=0.9\linewidth]{Z_source_5.png}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		
+	\end{subfigure}
+	\caption{\textit{From left to right and from top to bottom:} the first three plots show how Fe metallicity profiles evolved in the case with only source, respectively for $t_{1}=1 $ Gyr, $t_{2}=2$ Gyr, and $t_{3}=5$ Gyr. The light blue curve shows the numerical integration of \eqref{Feab}, the green curve is the same but with the subtraction of the background metallicity and the purple curve is the final profile.}
+	\label{fig:Zsourceonly}
+\end{figure}
+\begin{figure}[H]
+	\begin{subfigure}{0.49\textwidth}
+		
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		
+	\end{subfigure}
+	\caption{Diff + source}
+	\label{fig:Zdiffsource}
+\end{figure}
 
 \section*{Conclusions}
 
