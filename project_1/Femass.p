@@ -13,5 +13,5 @@ set autoscale # scale axes automatically
  set xlabel "Log r (kpc)"
  set ylabel "Log M (M_{⊙})" 
  set yrange [1e5: *]
- set xrange [0:*]
+ set xrange [0.56:*]
  plot "diff.dat" using 3:5 t 'Analytical profile' w lines, "diff.dat" u 3:4 t 'Numerical profile' w lines

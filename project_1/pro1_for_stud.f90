@@ -23,7 +23,7 @@ real*8 :: msol,mu,mp,rmin,rmax,mvir,rvir,mbcg,ahern,lsol,h,me,&
 real*8, dimension(jmax) :: u(jmax),flux(jmax),ne(jmax),zfe(jmax),& 
         kappa(jmax),lturb,rhofedot(jmax),rhofe(jmax),zfest(jmax),&
         amfeiniz(jmax),amfe(jmax),gradzfe(jmax),zfeobs(jmax),&
-        amfeobs(jmax),rhofeobs(jmax), diffzfe(jmax), mfetheo(jmax),rhotheo(jmax)
+        amfeobs(jmax),rhofeobs(jmax), diffzfe(jmax), mfetheo(jmax),rhotheo(jmax),rhotheodot(jmax)
 integer :: model, version, answer
 
 
@@ -270,7 +270,7 @@ else
 end if !!zfeout !!zfeobs(j)  !! which initial zfe? !! 
    rhofe(j)=rho(j)*zfe(j)/1.4
    rhofeobs(j)=rho(j)*zfeobs(j)/1.4
-   !rhotheo(j)=rhost(j)*5.e-22*(tnow-5*1.e9*years)
+  rhotheo(j)=rhost(j)
 enddo
 
  do j=1,jmax
@@ -375,6 +375,7 @@ do while (time.le.tend.or.n.le.ncycle)
 
  do j=2,jmax-2
     rhofedot(j)=(alphast*zfest(j)/1.4+alphasn*zfesn)*rhost(j)
+   ! rhotheodot(j)=rhost(j)*5.3e-22
  enddo
 
 !! the equation to be solved is d(n*zfe)/dt = div(kappa*n*grad(zfe)) + S
@@ -389,7 +390,7 @@ if(version==1) goto776
 !!!    if(j.eq.5)print*,'azz ',dt,rhofe(j),dt*rhofedot(j),rhofedot(j)
     rhofe(j)=rhofe(j) + dt*rhofedot(j)
     zfe(j)=rhofe(j)/rho(j) * 1.4
-    !rhotheo(j)=rhotheo(j)+rhost(j)*5.e-22*dt
+    !rhotheo(j)=rhotheo(j)+rhotheodot(j)*dt
  enddo
 
 !! set the boundary conditions (outflows)
@@ -444,16 +445,19 @@ enddo
 !! calcola la massa di Fe al tempo finale
 
       amfe(1)=rhofe(1)*vol(1)
+      !mfetheo(1)=rhost(1)*vol(1)*5.e-22*(time0)
       do j=1,jmax
-         mfetheo(j)=rhost(j)*vol(j)*(time0)*5.e-22
+         mfetheo(j)=(2*mbcg*(0.5-ahern/(r(j)+ahern)+ahern**2/(r(j)+ahern)**2/2))*tnow*(4.7e-20*zfest(1)/1.4*&
+     (-1/0.26*(1**(-0.26)-(time0/tnow)**(-0.26)))&
+      +4.436e-20*snu/aml*zfesn*(-1/0.1*(1**(-0.1)-(time0/tnow)**(-0.1))))
       enddo
       do j=2,jmax
          amfe(j)=amfe(j-1)+rhofe(j-1)*vol(j)
-         
+        ! mfetheo(j)=rhost(j-1)*vol(j)*5.e-22*(time0)+mfetheo(j-1)
       enddo
-     ! mfetheo(jmax)=(2*mbcg*(0.5-ahern/(r(jmax)+ahern)+ahern**2/(r(jmax)+ahern)**2/2))*tnow*(4.7e-20*zfest(1)/1.4*&
-     ! (-1/0.26*(1**(-0.26)-(time0/tnow)**(-0.26)))&
-     ! +4.436e-20*snu/aml*zfesn*(-1/0.1*(1**(-0.1)-(time0/tnow)**(-0.1))))/msol
+     !mfetheo(jmax)=(2*mbcg*(0.5-ahern/(r(jmax)+ahern)+ahern**2/(r(jmax)+ahern)**2/2))*tnow*(4.7e-20*zfest(1)/1.4*&
+     !(-1/0.26*(1**(-0.26)-(time0/tnow)**(-0.26)))&
+      !+4.436e-20*snu/aml*zfesn*(-1/0.1*(1**(-0.1)-(time0/tnow)**(-0.1))))/msol
 
       Fepeaksource=0.
       do j=1, jmax
@@ -577,7 +581,7 @@ enddo
 !3005  format(2(1pe12.4))
 if(amfe(180).lt.(amfeiniz(180)/2)) goto 8000
 print*,'Numeric diffusion time: ', t
-t=t+1
+t=t+0.1
 time0=tnow-t*1.e9*years
 time=time0
 tend=tnow

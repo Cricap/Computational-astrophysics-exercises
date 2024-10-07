@@ -245,6 +245,9 @@ For all the different scenarios, we run the simulation for three different integ
 	\caption{\textit{From left to right and from top to bottom:} Fe metallicity profiles evolved in the case with only diffusion, respectively for $t_{1}=1 $ Gyr, $t_{2}=2$ Gyr, and $t_{3}=5$ Gyr. The light blue curve shows the numerical integration of \eqref{Feab}, the green curve is the same but with the subtraction of the background metallicity and the purple curve is the final profile.}
 	\label{fig:Zdiffonly}
 \end{figure}
+For the diffusion-only model we also check the values of the mass within $100$ kpc as well as the total one in the whole grid, in order to check if it's conserved. For the former, the results at the three different times were $M_{Fe}(r<100\text{kpc},t_{1})=3.31\times10^{8}$M$_{\odot}$,$M_{Fe}(r<100\text{kpc},t_{2})=3.16\times10^{8}$M$_{\odot}$,
+ and $M_{Fe}(r<100\text{kpc},t_{3})=2.56\times10^{8}$M$_{\odot}$, while the latter is the same for all times, with $M_{Fe,tot}=7.08\times10^{9}$M$_{\odot}$. 
+ We also estimate the diffusion time by defining it as the time needed for the mass contained in a radius $L=80$kpc to be reduced by a factor 2: considering as diffusion coefficient the usual value, we get $\tau_{diff}=11.3$Gyr, which is comparable to the one obtained with the formula $\tau_{diff}=L^{2}/D=14.6$ Gyr. 
 \begin{figure}[H]
 	\begin{subfigure}{0.50\textwidth}
 		\includegraphics[width=0.9\linewidth]{Z_source_1.png}
@@ -256,11 +259,13 @@ For all the different scenarios, we run the simulation for three different integ
 		\includegraphics[width=0.9\linewidth]{Z_source_5.png}
 	\end{subfigure}
 	\begin{subfigure}{0.49\textwidth}
-		
+		\includegraphics[width=0.9\linewidth]{femass_comparison.png}
 	\end{subfigure}
-	\caption{\textit{From left to right and from top to bottom:} the first three plots show how Fe metallicity profiles evolved in the case with only source, respectively for $t_{1}=1 $ Gyr, $t_{2}=2$ Gyr, and $t_{3}=5$ Gyr. The light blue curve shows the numerical integration of \eqref{Feab}, the green curve is the same but with the subtraction of the background metallicity and the purple curve is the final profile.}
+	\caption{\textit{From left to right and from top to bottom:} the first three plots show how Fe metallicity profiles evolved in the case with only source, respectively for $t_{1}=1 $ Gyr, $t_{2}=2$ Gyr, and $t_{3}=5$ Gyr. The light blue curve shows the numerical integration of \eqref{Feab}, the green curve is the same but with the subtraction of the background metallicity and the purple curve is the final profile.
+	The last plot shows the comparison between the numerical iron mass profile (green curve) and the analytical one (purple curve) after $5$ Gyr.}
 	\label{fig:Zsourceonly}
 \end{figure}
+For the source-only model, we considered the half-mass radius as a way to determine the size of the Fe-peak, which gave a value of $R_{Fe,1/2}=$ for all three times. We then compare the total Fe masses obtained numerically to the ones obtained by integrating over time and volume the source term; for $t_{1}$ we get $M_{Fe,tot}=1.74\times10^{7}$M$_{\odot}$ and $M_{Fe,tot}^{theo}=1.74\times10^{7}$ m$_{\odot}$, for $t_{2}$ we get $M_{Fe,tot}=3.63\times10^{7}$M$_{7}$ and $M_{Fe,tot}^{theo}=3.65\times 10^{7}$M$_{\odot}$, and for $t_{3}$ we get $M_{Fe,tot}=1.06\times10^{8}$M$_{\odot}$ and $M_{Fe,tot}^{theo}=1.07\times10^{8}$ m$_{\odot}$.
 \begin{figure}[H]
 	\begin{subfigure}{0.49\textwidth}
 		
