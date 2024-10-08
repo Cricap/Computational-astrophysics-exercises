@@ -18,7 +18,12 @@
 \maketitle
 
 \section*{Introduction}
-Scopo+descrizione sistema
+Galaxy clusters are the largest collapsed structures in the Universe, with the most regular ones being almost virialised and with $M_{vir}\gtrsim 10^{14}$ M$_{\odot}$ and $R_{vir}\gtrsim 1$ Mpc. They are gravitationally bound aggregations of galaxies containing from $\sim 50$ up to a few $10^{3}$ galaxies., with most of their mass in the form of dark matter, with $\sim 10-16\%$ of their mass in the form of baryons, mostly hot gas ($T\sim 10^{7\text{\textemdash}8}$ K) called the intracluster medium (ICM). This diffuse ($n\sim 10^{-1}\text{\textendash}10^{-3}$ cm$^{-3}$) is a fully ionized plasma which is weakly collisional and it's almost hydrostatic, supported by thermal pressure (while the galaxies are supported by the dynamical one). 
+Its interaction with the galaxies is a key process in modern astrophysics.
+Stars are also present,but they make only $1\text{\textendash}5\%$ of the total mass of the cluster. Many clusters host in their centre a large elliptical galaxy, with a mass of $\sim 5\times 10^{11\text{\textemdash}12}$ M$_{\odot}$ (the most massive ones can get up to $10^{13}$ m$_{\odot}$) and a massive black hole at the centre, which provides a huge amount of energy to the ICM (aka the AGN feedback). These galaxies are called \textit{brightest cluster galaxies} (or BCGs for short), and aside from being the most luminous in the cluster they play a key role in its evolution.
+\\For a more detailed discussion on galaxy clusters, please refers to \cite[Sec. 6.4]{cimatti}.\\
+We wanted to understand what could be the cause behind the outward iron spreading through the ICM. In order to do that, we divide the project in two parts: first, we model numerically the hydrostatic equilibrium of the hot gas in the cluster potential well, then we proceed to model the time evolution of the Fe abundance profile. We chose as a model the Perseus cluster and we followed the work by Rebusco et al. (2005)\cite{rebusco}.\\
+We developed the numerical code using Fortran90, while for the plots we used gnuplot. 
 \section{Hydrostatic configuration}
 \subsection{Physical model}
 The first part of the project is about understanding how the gas is distributed in a cluster, and to do so a proper gravitational model is needed.
@@ -175,7 +180,7 @@ $\sim 800$ kpc, which means that the gas is colder than the isothermal model and
 In the second part of the project we study the diffusion of iron in the ICM. Basically, the idea is that the ICM has been enriched by stars (mostly SNIa explosions but also stellar winds) to a level comparable to the ISM in the Milky Way. This means we observe mostly iron, which can be used as our metal tracer.
 The Fe abundance ranges from $0.3$ to $0.5 Z_{Fe,\odot}$, where $Z_{Fe,\odot}=0.0018$.
 What we want to find is not only the origin and the amount of metals, but also their spatial distributions. Peaked abundance profiles are a characteristic feature of clusters with cool cores, and abundance peaks are probably associated with with BCGs (see \cite{rebusco}), in which SNIa explode, injecting energy ($\sim 10^{51}$ erg each) and metals, especially iron ($\sim 0.7$ M$_{\odot}$ each).
-However, the width of the peaks is much broader than the BCG light distribution (see \textbf{INSERT CITATION}), suggesting that there is a mechanism that is transporting the metals originated from within the BCG.\\ 
+However, the width of the peaks is much broader than the BCG light distribution (see \cite[text]{grandi}), suggesting that there is a mechanism that is transporting the metals originated from within the BCG.\\ 
 We assume that this process can be treated as diffusive, and it's produced by stochastic gas motions. Under the assumption of spherical symmetry, we have that the iron density $\rho_{Fe}$ obeys the following diffusion equation:
 \begin{equation} \label{diffeq}
 	\pdv{\rho_{Fe}}{t}=\frac{1}{1.4}\frac{1}{r^{2}}\pdv{(r^{2}D\rho_{g}\pdv{Z_{Fe}}{r})}{r}+S_{Fe}(r,t), \quad \text{with}\quad Z_{Fe}=1.4\frac{\rho_{Fe}}{\rho_{g}}
@@ -265,32 +270,42 @@ For the diffusion-only model we also check the values of the mass within $100$ k
 	The last plot shows the comparison between the numerical iron mass profile (green curve) and the analytical one (purple curve) after $5$ Gyr.}
 	\label{fig:Zsourceonly}
 \end{figure}
-For the source-only model, we considered the half-mass radius as a way to determine the size of the Fe-peak, which gave a value of $R_{Fe,1/2}=$ for all three times. We then compare the total Fe masses obtained numerically to the ones obtained by integrating over time and volume the source term; for $t_{1}$ we get $M_{Fe,tot}=1.74\times10^{7}$M$_{\odot}$ and $M_{Fe,tot}^{theo}=1.74\times10^{7}$ m$_{\odot}$, for $t_{2}$ we get $M_{Fe,tot}=3.63\times10^{7}$M$_{7}$ and $M_{Fe,tot}^{theo}=3.65\times 10^{7}$M$_{\odot}$, and for $t_{3}$ we get $M_{Fe,tot}=1.06\times10^{8}$M$_{\odot}$ and $M_{Fe,tot}^{theo}=1.07\times10^{8}$ m$_{\odot}$.
+For the source-only model, we considered the half-mass radius as a way to determine the size of the Fe-peak, which gave a value of $R_{Fe,1/2}=12.3$ kpc for all three times. We then compare the total Fe masses obtained numerically to the ones obtained by integrating over time and volume the source term; for $t_{1}$ we get $M_{Fe,tot}=1.74\times10^{7}$M$_{\odot}$ and $M_{Fe,tot}^{theo}=1.74\times10^{7}$ m$_{\odot}$, for $t_{2}$ we get $M_{Fe,tot}=3.63\times10^{7}$M$_{7}$ and $M_{Fe,tot}^{theo}=3.65\times 10^{7}$M$_{\odot}$, and for $t_{3}$ we get $M_{Fe,tot}=1.06\times10^{8}$M$_{\odot}$ and $M_{Fe,tot}^{theo}=1.07\times10^{8}$ m$_{\odot}$.
 \begin{figure}[H]
 	\begin{subfigure}{0.49\textwidth}
-		
+		\includegraphics[width=0.9\linewidth]{Z_diffsource_1.png}
 	\end{subfigure}
 	\begin{subfigure}{0.49\textwidth}
-		
+		\includegraphics[width=0.9\linewidth]{Z_diffsource_2.png}
 	\end{subfigure}
 	\begin{subfigure}{0.49\textwidth}
-		
+		\includegraphics[width=0.9\linewidth]{Z_diffsource_5.png}
 	\end{subfigure}
 	\begin{subfigure}{0.49\textwidth}
-		
+		\includegraphics[width=0.9\linewidth]{Z_diffsource_8.png}
 	\end{subfigure}
-	\caption{Diff + source}
+	\caption{\textit{From left to right and from top to bottom:}the first three plots show the Fe metallicity profiles evolved in the presence of both diffusion and source (purple curve), first for $t_{1}=1$Gyr, then for $t_{2}=2$Gyr and lastly for $t_{3}=5$Gyr. The last plot shows the same profile but evolved for $t_{4}=8$ Gyr and with $D=2.4\times 10^{29}$cm$^{2}$/s. For this last plot the value of $SNu(t_{now})=0.7$ has been used.}
 	\label{fig:Zdiffsource}
 \end{figure}
-
+For the third model, we obtain for the half-mass radii and total Fe masses the following values: $R_{Fe,1/2}(t_{1})=38.6$ kpc, $R_{Fe,1/2}(t_{2})=43.7$ kpc, and $R_{Fe,1/2}(t_{3})=63.9$ kpc,
+$M_{Fe,tot}(t_{1})=2.43\times10^{7}$M$_{\odot}$, $M_{Fe,tot}(t_{2})=3.62\times10^{7}$M$_{\odot}$, and $M_{Fe,tot}(t_{3})=1.06\times10^{8}$M$_{\odot}$.
+The values of the half-mass radii all exceeds the half-light radius of the BCG ($r_{1/2}=12$ kpc), which means that turbolent diffusion could be the mechanism we need to explain the spreading of Fe outwards. However, from Fig.\ref{fig:Zdiffsource} we can see that the numerical profile is not able to reproduce the observed one. The only plot that has a good agreement with the observations is the fourth one in the region with $r>50$ kpc, where we changed the values of $D$, $SNu(t_{now})$, and the integration time, which was set to $8$ Gyr, so an old cluster.
 \section*{Conclusions}
+We start from three different initial assumptions to get three different density profile in the hydrostatic equilibrium configuration. We can explain the differences between them with the change in the gravitational field due to the addition of the BCG, which causes a steepening, as well as with the adoption of a gradient in the temperature, which causes the gas to be hotter than the isothermal one in the range between $60$ and $800$ kpc. We then proceed to study the emission of Fe in the ICM and we try to determine what mechanism lies behind it. We determine that turbolence could be the cause and we show that with a diffusion coefficient $D=2.4\times 10^{29}$ cm$^{2}$/s and a value
+of $SNu(t_{now})=0.7$, using the model with both diffusion and source, we get that iron is diffused several times above the half-light radius of the BCG, as well as a good agreement with the observed Fe profile.
 
 
-
-\begin{thebibliography}{1}
+\begin{thebibliography}{3}
+	\bibitem{cimatti}
+	A. Cimatti, F. Fraternali, and C. Nipoti. Introduction to Galaxy Formation and Evolution.
+From Primordial Gas to Present-Day Galaxies. Cambridge University Press, 2020.
 	\bibitem{rebusco}
 	P. Rebusco et al. “Impact of stochastic gas motions on galaxy cluster abundance profiles”.
 In: Mon. Not. R. Astron. Soc. 359 (2005), pp. 1041–1048. doi: https://doi.org/10.
 1111/j.1365-2966.2005.08965.x.
+\bibitem{grandi}
+S. De Grandi et al. “On the Fe abundance peak formation in cool-core clusters of galaxies:
+hints from cluster WARPJ1415.1+3612 at z = 1.03”. In: A\&A 567 (2014). doi: https:
+//doi.org/10.1051/0004-6361/201423928.
 \end{thebibliography}
 \end{document}
