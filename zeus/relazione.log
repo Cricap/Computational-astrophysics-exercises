@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.10.7)  2 NOV 2024 14:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.10.7)  2 NOV 2024 20:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/cricap/Computational-astrophysics-exercises/project_1/relazione
-(/home/cricap/Computational-astrophysics-exercises/project_1/relazione.tex
+**/home/cricap/Computational-astrophysics-exercises/zeus/relazione
+(/home/cricap/Computational-astrophysics-exercises/zeus/relazione.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-21> (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -228,23 +228,38 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \float@box=\box98
 \@float@everytoks=\toks25
 \@floatcapt=\box99
+) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1356.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
 ) (./relazione.aux)
 \openout1 = `relazione.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -302,129 +317,72 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 18.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 19.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 18.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 19.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-<dm_mass_profile.png, id=23, 953.06062pt x 493.845pt>
-File: dm_mass_profile.png Graphic file (type png)
-<use dm_mass_profile.png>
-Package pdftex.def Info: dm_mass_profile.png  used on input line 130.
-(pdftex.def)             Requested size: 223.09846pt x 115.60146pt.
-<mass_profiles.png, id=24, 1434.86063pt x 704.6325pt>
-File: mass_profiles.png Graphic file (type png)
-<use mass_profiles.png>
-Package pdftex.def Info: mass_profiles.png  used on input line 133.
-(pdftex.def)             Requested size: 223.09846pt x 109.55022pt.
-<density_profiles.png, id=25, 1434.86063pt x 704.6325pt>
-File: density_profiles.png Graphic file (type png)
-<use density_profiles.png>
-Package pdftex.def Info: density_profiles.png  used on input line 146.
-(pdftex.def)             Requested size: 505.89pt x 248.43138pt.
-<rhoiso.png, id=26, 481.8pt x 361.35pt>
-File: rhoiso.png Graphic file (type png)
-<use rhoiso.png>
-Package pdftex.def Info: rhoiso.png  used on input line 152.
-(pdftex.def)             Requested size: 505.89pt x 379.4287pt.
- [3 <./dm_mass_profile.png (PNG copy)> <./mass_profiles.png (PNG copy)>]
-<temprofiles.png, id=33, 481.8pt x 361.35pt>
-File: temprofiles.png Graphic file (type png)
-<use temprofiles.png>
-Package pdftex.def Info: temprofiles.png  used on input line 158.
-(pdftex.def)             Requested size: 247.88887pt x 185.91261pt.
-<rebrho.png, id=34, 481.8pt x 361.35pt>
-File: rebrho.png Graphic file (type png)
-<use rebrho.png>
-Package pdftex.def Info: rebrho.png  used on input line 161.
-(pdftex.def)             Requested size: 247.88887pt x 185.91261pt.
- [4 <./density_profiles.png (PNG copy)>] [5 <./rhoiso.png (PNG copy)> <./temprofiles.png (PNG copy)> <./rebrho.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 202--204
+)
+Underfull \hbox (badness 10000) in paragraph at lines 50--52
 
  []
 
-[6]
-<Z_diff_1.png, id=44, 481.8pt x 361.35pt>
-File: Z_diff_1.png Graphic file (type png)
-<use Z_diff_1.png>
-Package pdftex.def Info: Z_diff_1.png  used on input line 242.
-(pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
-<Z_diff_2.png, id=45, 481.8pt x 361.35pt>
-File: Z_diff_2.png Graphic file (type png)
-<use Z_diff_2.png>
-Package pdftex.def Info: Z_diff_2.png  used on input line 245.
-(pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
-<Z_diff_5.png, id=46, 481.8pt x 361.35pt>
-File: Z_diff_5.png Graphic file (type png)
-<use Z_diff_5.png>
-Package pdftex.def Info: Z_diff_5.png  used on input line 248.
-(pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
- [7]
-<Z_source_1.png, id=51, 481.8pt x 361.35pt>
-File: Z_source_1.png Graphic file (type png)
-<use Z_source_1.png>
-Package pdftex.def Info: Z_source_1.png  used on input line 258.
-(pdftex.def)             Requested size: 227.64894pt x 170.73326pt.
-<Z_source_2.png, id=52, 481.8pt x 361.35pt>
-File: Z_source_2.png Graphic file (type png)
-<use Z_source_2.png>
-Package pdftex.def Info: Z_source_2.png  used on input line 261.
-(pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
-<Z_source_5.png, id=53, 481.8pt x 361.35pt>
-File: Z_source_5.png Graphic file (type png)
-<use Z_source_5.png>
-Package pdftex.def Info: Z_source_5.png  used on input line 264.
-(pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
-<femass_comparison.png, id=54, 481.8pt x 361.35pt>
-File: femass_comparison.png Graphic file (type png)
-<use femass_comparison.png>
-Package pdftex.def Info: femass_comparison.png  used on input line 267.
-(pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
- [8 <./Z_diff_1.png (PNG copy)> <./Z_diff_2.png (PNG copy)> <./Z_diff_5.png (PNG copy)>]
-<Z_diffsource_1.png, id=58, 481.8pt x 361.35pt>
-File: Z_diffsource_1.png Graphic file (type png)
-<use Z_diffsource_1.png>
-Package pdftex.def Info: Z_diffsource_1.png  used on input line 276.
-(pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
-<Z_diffsource_2.png, id=59, 481.8pt x 361.35pt>
-File: Z_diffsource_2.png Graphic file (type png)
-<use Z_diffsource_2.png>
-Package pdftex.def Info: Z_diffsource_2.png  used on input line 279.
-(pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
-<Z_diffsource_5.png, id=60, 481.8pt x 361.35pt>
-File: Z_diffsource_5.png Graphic file (type png)
-<use Z_diffsource_5.png>
-Package pdftex.def Info: Z_diffsource_5.png  used on input line 282.
-(pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
-<Z_diffsource_8.png, id=61, 481.8pt x 361.35pt>
-File: Z_diffsource_8.png Graphic file (type png)
-<use Z_diffsource_8.png>
-Package pdftex.def Info: Z_diffsource_8.png  used on input line 285.
-(pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
 
-Underfull \hbox (badness 6725) in paragraph at lines 275--287
-[]$[]$ $[]$
+Underfull \hbox (badness 10000) in paragraph at lines 53--54
+
  []
 
-[9 <./Z_source_1.png (PNG copy)> <./Z_source_2.png (PNG copy)> <./Z_source_5.png (PNG copy)> <./femass_comparison.png (PNG copy)>] [10 <./Z_diffsource_1.png (PNG copy)> <./Z_diffsource_2.png (PNG copy)> <./Z_diffsource_5.png (PNG copy)> <./Z_diffsource_8.png (PNG copy)>] [11] (./relazione.aux) ) 
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 92--94
+
+ []
+
+[2]
+<cartshock100.pdf, id=24, 642.4pt x 481.8pt>
+File: cartshock100.pdf Graphic file (type pdf)
+<use cartshock100.pdf>
+Package pdftex.def Info: cartshock100.pdf  used on input line 113.
+(pdftex.def)             Requested size: 455.2979pt x 341.4849pt.
+<cartshock.pdf, id=25, 707.64375pt x 487.8225pt>
+File: cartshock.pdf Graphic file (type pdf)
+<use cartshock.pdf>
+Package pdftex.def Info: cartshock.pdf  used on input line 119.
+(pdftex.def)             Requested size: 455.2979pt x 313.86525pt.
+<spheshock100.pdf, id=26, 642.4pt x 481.8pt>
+File: spheshock100.pdf Graphic file (type pdf)
+<use spheshock100.pdf>
+Package pdftex.def Info: spheshock100.pdf  used on input line 125.
+(pdftex.def)             Requested size: 455.2979pt x 341.4849pt.
+ [3 <./cartshock100.pdf>]
+<spheshock.pdf, id=40, 707.64375pt x 487.8225pt>
+File: spheshock.pdf Graphic file (type pdf)
+<use spheshock.pdf>
+Package pdftex.def Info: spheshock.pdf  used on input line 131.
+(pdftex.def)             Requested size: 455.2979pt x 313.86525pt.
+ [4 <./cartshock.pdf>]
+<strongshocktube.pdf, id=54, 709.65125pt x 509.905pt>
+File: strongshocktube.pdf Graphic file (type pdf)
+<use strongshocktube.pdf>
+Package pdftex.def Info: strongshocktube.pdf  used on input line 137.
+(pdftex.def)             Requested size: 455.2979pt x 327.15503pt.
+ [5 <./spheshock100.pdf>] [6 <./spheshock.pdf>] [7 <./strongshocktube.pdf>] (./relazione.aux) ) 
 Here is how much of TeX's memory you used:
- 5425 strings out of 478287
- 85522 string characters out of 5849289
- 398528 words of memory out of 5000000
- 23563 multiletter control sequences out of 15000+600000
- 477803 words of font info for 61 fonts, out of 8000000 for 9000
+ 5818 strings out of 478287
+ 89653 string characters out of 5849289
+ 403715 words of memory out of 5000000
+ 23955 multiletter control sequences out of 15000+600000
+ 480252 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,13n,77p,840b,393s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on relazione.pdf (11 pages, 762530 bytes).
+ 68i,10n,77p,716b,294s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on relazione.pdf (7 pages, 475710 bytes).
 PDF statistics:
- 143 PDF objects out of 1000 (max. 8388607)
- 78 compressed objects within 1 object stream
+ 159 PDF objects out of 1000 (max. 8388607)
+ 99 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 86 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

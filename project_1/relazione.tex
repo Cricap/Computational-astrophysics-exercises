@@ -1,7 +1,7 @@
 \documentclass{article}
 
 %opening
-\title{Manco il titolo mi ricordo}
+\title{Hydrostatic equilibrium in a galaxy cluster and turbolent diffusion of metals in the ICM}
 \author{Cristina Caprioglio}
 \date{2023/2024 }
 \usepackage[margin=0.75in]{geometry}
@@ -21,7 +21,7 @@
 Galaxy clusters are the largest collapsed structures in the Universe, with the most regular ones being almost virialised and with $M_{vir}\gtrsim 10^{14}$ M$_{\odot}$ and $R_{vir}\gtrsim 1$ Mpc. They are gravitationally bound aggregations of galaxies containing from $\sim 50$ up to a few $10^{3}$ galaxies., with most of their mass in the form of dark matter, with $\sim 10-16\%$ of their mass in the form of baryons, mostly hot gas ($T\sim 10^{7\text{\textemdash}8}$ K) called the intracluster medium (ICM). This diffuse ($n\sim 10^{-1}\text{\textendash}10^{-3}$ cm$^{-3}$) is a fully ionized plasma which is weakly collisional and it's almost hydrostatic, supported by thermal pressure (while the galaxies are supported by the dynamical one). 
 Its interaction with the galaxies is a key process in modern astrophysics.
 Stars are also present,but they make only $1\text{\textendash}5\%$ of the total mass of the cluster. Many clusters host in their centre a large elliptical galaxy, with a mass of $\sim 5\times 10^{11\text{\textemdash}12}$ M$_{\odot}$ (the most massive ones can get up to $10^{13}$ m$_{\odot}$) and a massive black hole at the centre, which provides a huge amount of energy to the ICM (aka the AGN feedback). These galaxies are called \textit{brightest cluster galaxies} (or BCGs for short), and aside from being the most luminous in the cluster they play a key role in its evolution.
-\\For a more detailed discussion on galaxy clusters, please refers to \cite[Sec. 6.4]{cimatti}.\\
+\\For a more detailed discussion on galaxy clusters, please refer to \cite[Sec. 6.4]{cimatti}.\\
 We wanted to understand what could be the cause behind the outward iron spreading through the ICM. In order to do that, we divide the project in two parts: first, we model numerically the hydrostatic equilibrium of the hot gas in the cluster potential well, then we proceed to model the time evolution of the Fe abundance profile. We chose as a model the Perseus cluster and we followed the work by Rebusco et al. (2005)\cite{rebusco}.\\
 We developed the numerical code using Fortran90, while for the plots we used gnuplot. 
 \section{Hydrostatic configuration}

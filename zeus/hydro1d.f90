@@ -6,7 +6,7 @@
 MODULE DATA
 integer :: N, i
 real*8 :: pi,cmpc,cmkpc,yr,kbol,mu,mp
-parameter (N=1001) 
+parameter (N=101) 
 parameter(pi=3.141592)
 parameter(cmpc=3.085d18)
 parameter(cmkpc=1000.*cmpc)
@@ -116,7 +116,7 @@ end if
 
 !IMPLEMENTAZIONE CONDIZIONI INIZIALI
 
- gam=5./3.
+ gam=1.4
  cv=1.99d8    !! warning: this is right for gam = 5/3 !!
  t=0.
  tmax=0.245
@@ -127,11 +127,11 @@ end if
 
 do i=1, N
         if(xa(i).le.0.5*xmax)then
-          d(i)=100.0
-          p(i)=0.67
-        else
           d(i)=1
-          p(i)=0.67e-7
+          p(i)=1
+        else
+          d(i)=0.125
+          p(i)=0.1
         endif       
 	v(i)=0.
 	e(i)=p(i)/(gam-1.)
@@ -309,9 +309,9 @@ if (sdr==1) then
 	open(30,file='results2.dat')
 	
 	do i=1,N  !! write the results in the file "results.dat"
-		write (30,2000) xa(i),xb(i),d(i),v(i),e(i)/d(i),p(i)
+		write (30,2000) xa(i),xb(i),d(i),v(i),e(i)/d(i),p(i), s(i)
 	end do
-	2000 format(6(1pe12.4))
+	2000 format(7(1pe12.4))
 	
 	close(30)
 	end if
@@ -331,8 +331,6 @@ if (coord == 1) then
 z1(2)=0.
 z1(1)=-z1(3)
 z1(N)=z1(N-1)     
-z1(N)=-z1(N-2)
-z1(N-1)=0
 end if
 coord=coord
 END SUBROUTINE BCa
