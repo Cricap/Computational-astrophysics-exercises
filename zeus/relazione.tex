@@ -1,7 +1,7 @@
 \documentclass{article}
 
 %opening
-\title{Manco il titolo mi ricordo}
+\title{Simulation of the interaction of a supernova explosion with the ISM}
 \author{Cristina Caprioglio}
 \date{2023/2024 }
 \usepackage[margin=0.75in]{geometry}
@@ -19,7 +19,10 @@
 \maketitle
 
 \section*{Introduction}
-
+Supernova explosions are the main responsibles of the stellar feedback in the ISM. They produce a rapid ejection of large quantities of gas in the ISM. The process last a few seconds, with the velocity of the ejected mass being of the order of $10^{3}$\textemdash$10^{4}$ km/s and provides the ISM with an energy of $E\sim 10^{51}$ erg. Due to the high velocities of the ejecta, which are supersonic, causes the quick (a few hundred years) formation of a shock, which expansion generates a roughly spherical shell of shocked ISM: this shell and its interior are called a supernova remnant (SNR). 
+The shock propagation is described by the so-called Sedov solution, with the shock radius increasing with time $R_{shock}\propto t^{2/5}$. Understanding this process is of vital importance in the evolution of the ISM in galaxies, but it's also relevant for AGN feedback process. 
+For a more detailed discussion on supernovae, please refer to \cite[Sec. 8.7]{cimatti}.\\
+In this project, we numerically study the time evolution of a SNR with a simplified model that doesn't take into account radiative losses (so our ISM is uniform,  we have no stellar winds before the explosion, we have no thermal conduction, etc.) by using a hydrocode for the 1D numerical integration of Euler equations. We developed it using fortran, while we used gnuplot for the plots.
 \section{1D Hydrocode}
 The code we use is based on the ZEUS code by J. Stone and M. Norman (see \cite{stone} for more details), and it's an hydrocode for the 1D numerical integration of Euler equations.
 \subsection{Description}
@@ -111,31 +114,33 @@ We can see how using 1000 points instead of 100 make the shock and contact disco
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9 \linewidth]{cartshock100.pdf}
-	\caption{a}
+	\caption{Sod shock tube test for a 100 points grid. From left to right and from top to bottom: $\rho$, $p$, $v$, $\frac{\epsilon}{\rho}$, and $m$ after a $t_{max}=0.245$.}
 	\label{fig:cartshock100}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9 \linewidth]{cartshock.pdf}
-	\caption{a}
+	\caption{Sod shock tube test for a 1000 points grid. From left to right and from top to bottom: $\rho$, $p$, $v$, $\frac{\epsilon}{\rho}$, and $m$ after a $t_{max}=0.245$.}
 	\label{fig:cartshock1000}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9 \linewidth]{spheshock100.pdf}
-	\caption{a}
+	\caption{Spherical shock tube test for a 100 points grid. From left to right and from top to bottom: $\rho$, $p$, $v$, $\frac{\epsilon}{\rho}$, and $m$ after a $t_{max}=0.5$.}
 	\label{fig:spheshock100}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9 \linewidth]{spheshock.pdf}
-	\caption{a}
+	\caption{Spherical shock tube test for a 1000 points grid. From left to right and from top to bottom: $\rho$, $p$, $v$, $\frac{\epsilon}{\rho}$, and $m$ after a $t_{max}=0.5$.}
+
 	\label{fig:spheshock1000}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9 \linewidth]{strongshocktube.pdf}
-	\caption{a}
+	\caption{Strong shock tube test in cartesian coordinates for a 1000 points grid. From left to right and from top to bottom: $\rho$, $p$, $v$, $\frac{\epsilon}{\rho}$, and $m$ after a $t_{max}=2$.}
+
 	\label{fig:strongshock}
 \end{figure}
 \section{SNR evolution simulation}
