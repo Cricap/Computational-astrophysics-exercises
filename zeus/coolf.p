@@ -11,8 +11,10 @@ set termopt enhanced
 set logscale
 set format y "%T"
  set format x "%T"
-
+set grid
+set size square
  set xlabel "Log(T) (K)"
- set ylabel "Log(/Symbol L) (erg cm^{3} s^{-1})"
+ set ylabel "Log({/Symbol L}) (erg cm^{3} s^{-1})"
+set xrange [10000:1e9]
 
  plot "Coolingf.dat" using 2:1 t '' w l

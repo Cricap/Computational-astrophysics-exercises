@@ -14,18 +14,20 @@
 	\usepackage{float}
 	\usepackage[justification=centering]{caption}
 	\usepackage{xcolor}
+	\usepackage{calligra}
+\usepackage[T1]{fontenc}
 \begin{document}
 
 \maketitle
 
-\section*{Introduction}
+\section*{Introduction}\label{intro}
 Supernova explosions are the main responsibles of the stellar feedback in the ISM. They produce a rapid ejection of large quantities of gas in the ISM. The process last a few seconds, with the velocity of the ejected mass being of the order of $10^{3}$\textemdash$10^{4}$ km/s and provides the ISM with an energy of $E\sim 10^{51}$ erg. Due to the high velocities of the ejecta, which are supersonic, causes the quick (a few hundred years) formation of a shock, which expansion generates a roughly spherical shell of shocked ISM: this shell and its interior are called a supernova remnant (SNR). 
 The shock propagation is described by the so-called Sedov solution, with the shock radius increasing with time $R_{shock}\propto t^{2/5}$. Understanding this process is of vital importance in the evolution of the ISM in galaxies, but it's also relevant for AGN feedback process. 
 For a more detailed discussion on supernovae, please refer to \cite[Sec. 8.7]{cimatti}.\\
-In this project, we numerically study the time evolution of a SNR with a simplified model that doesn't take into account radiative losses (so our ISM is uniform,  we have no stellar winds before the explosion, we have no thermal conduction, etc.) by using a hydrocode for the 1D numerical integration of Euler equations. We developed it using fortran, while we used gnuplot for the plots.
+In this project, we numerically study the time evolution of a SNR with a simplified model that doesn't take into account radiative losses (so our ISM is uniform,  we have no stellar winds before the explosion, we have no thermal conduction, etc.) by using a hydrocode for the 1D numerical integration of Euler equations. We developed it using Fortran90, while we used gnuplot for the plots.
 \section{1D Hydrocode}
 The code we use is based on the ZEUS code by J. Stone and M. Norman (see \cite{stone} for more details), and it's an hydrocode for the 1D numerical integration of Euler equations.
-\subsection{Description}
+\subsection{Description}\label{descrip}
 As mentioned above, our code solves the Euler equations of fluid dynamics in 1D. Using Cartesian coordinates, our set is written as:
 \begin{align}
 	&\pdv{\rho}{t}+\pdv{(\rho v)}{x}=0 \label{eoc}\\
@@ -33,7 +35,7 @@ As mentioned above, our code solves the Euler equations of fluid dynamics in 1D.
 	&\pdv{\epsilon}{t}+\pdv{(\epsilon v)}{x}+p\pdv{v}{x}=0,\label{eoe}
 \end{align}
 where $\rho,\, p,\, v,$ and $\epsilon$ are respectively the density, the pressure, the velocity, and the internal energy of the fluid, while $m=\rho v$ is the momentum density. We couple our system with the gas equation of state, which is:
-\begin{equation}
+\begin{equation}\label{eqstate}
 	\epsilon=\frac{p}{\gamma -1},
 \end{equation}
 with $\gamma=5/3$ being the adiabatic coefficient for a monoatomic gas.\\
@@ -56,7 +58,7 @@ with $Q=const$. The artificial viscosity is added to the pressure in the hydro e
 \textcolor{red}{Add reference}\\
 
 After setting the initial conditions, we can start the time integration, where at the beginning of each cycle we have to compute the timestep $\Delta t$. The latter has to satisfy the Courant-Friedrichs-Lewy (CFL) condition for stability, so we set $\Delta t$ as:
-\begin{equation}
+\begin{equation}\label{timeeq}
 	\Delta t=C\min_{j}{\frac{x_{j+1/2}-x_{j-1/2}}{\abs{v}+c_{s,j}}} \qquad C\in \left]0,1\right[,
 \end{equation}
 where $c_s=\sqrt{\gamma p/\rho}$ is the sound speed for an ideal gas. It's worth noting that in theory the addition of artificial viscosity adds another constraint, but we can neglect it. \\
@@ -113,32 +115,32 @@ We can see how using 1000 points instead of 100 make the shock and contact disco
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9 \linewidth]{cartshock100.pdf}
+	\includegraphics[width=0.8 \linewidth]{cartshock100.pdf}
 	\caption{Sod shock tube test for a 100 points grid. From left to right and from top to bottom: $\rho$, $p$, $v$, $\frac{\epsilon}{\rho}$, and $m$ after a $t_{max}=0.245$.}
 	\label{fig:cartshock100}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9 \linewidth]{cartshock.pdf}
+	\includegraphics[width=0.8 \linewidth]{cartshock.pdf}
 	\caption{Sod shock tube test for a 1000 points grid. From left to right and from top to bottom: $\rho$, $p$, $v$, $\frac{\epsilon}{\rho}$, and $m$ after a $t_{max}=0.245$.}
 	\label{fig:cartshock1000}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9 \linewidth]{spheshock100.pdf}
+	\includegraphics[width=0.8 \linewidth]{spheshock100.pdf}
 	\caption{Spherical shock tube test for a 100 points grid. From left to right and from top to bottom: $\rho$, $p$, $v$, $\frac{\epsilon}{\rho}$, and $m$ after a $t_{max}=0.5$.}
 	\label{fig:spheshock100}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9 \linewidth]{spheshock.pdf}
+	\includegraphics[width=0.8 \linewidth]{spheshock.pdf}
 	\caption{Spherical shock tube test for a 1000 points grid. From left to right and from top to bottom: $\rho$, $p$, $v$, $\frac{\epsilon}{\rho}$, and $m$ after a $t_{max}=0.5$.}
 
 	\label{fig:spheshock1000}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9 \linewidth]{strongshocktube.pdf}
+	\includegraphics[width=0.8 \linewidth]{strongshocktube.pdf}
 	\caption{Strong shock tube test in cartesian coordinates for a 1000 points grid. From left to right and from top to bottom: $\rho$, $p$, $v$, $\frac{\epsilon}{\rho}$, and $m$ after a $t_{max}=2$.}
 
 	\label{fig:strongshock}
@@ -146,8 +148,54 @@ We can see how using 1000 points instead of 100 make the shock and contact disco
 \section{SNR evolution simulation}
 
 \subsection{Physical model}
+As mentioned in the introduction, we study the evolution of a SNR, which is divided in different phases. We consider an idealized problem, where a large amount of energy is released in a very small region of an uniform ISM, thus giving us a spherical shock wave, with a very strong shock expected, which allows us to assume that the pressure of the ISM is negligible. \\
+The first phase is the free expansion, in which the SN ejecta will expand freely, with $v=v_{ej}$, until it sweeps a mass of ISM comparable to its mass. This means that it terminates when:
+\begin{equation}
+	\frac{4\pi }{3}R_{1}^{3}\rho_0=M_{ej} \Longrightarrow R_1=\left(\frac{3M_{ej}}{4\pi \rho_0}\right)^{1/3}\sim 2\left(\frac{M_{ej}}{M_{\odot}}\right)^ {1/3}n_0^{-1/3}\; \text{pc},
+\end{equation}
+where $\rho_0$ is the density of the unperturbed ISM.
+Here, we have that the radius is proportional to the time, so the expansion ends at:
+\begin{equation}
+	t_1=\frac{R_1}{v_{ej}}\sim 200 \left(\frac{M_{ej}}{M_{\odot}}\right)^{1/3}n_0^ {-1/3} \; \text{yr}.
+\end{equation}
+The second phase is the adiabatic Sedov phase, which is where many observed SNRs are currently at. The ejecta slows down as well as the forward shock, which leaves behind a low-density hot bubble.
+Our SNR is basically a bubble with a thin shell in which is where most of the ISM originally contained within the shock radius $R_s$ is. Keeping the assumption of a strong shock and assuming that all of the energy of the SN $E_{SN}$ is contained in the bubble, we find the evolution of the radius now follow a power law, namely the Sedov law:
+\begin{equation}
+	R_S(t)=1.15\left(\frac{E_{SN}}{\rho_0}\right)^{1/5}t^{2/5}.
+\end{equation}
+This phase ends when radiative losses become relevant, which is when the temperature of the shock decreases to $T_s\sim10^{6}$ K, which typically happens after a few $10^{4}$ yr, but it has a strong dependance on the density of the ISM. Once radiative cooling becomes important the shell radiates its thermal energy, which causes a decrease in the support against gravity from the pressure and causes the collapse of the structure, making it very cold and dense. This is called radiative shock, where we have that the density is proportional to $\mathcal{M}^2$, where $\mathcal{M}$ is the shock Mach number.
+The internal energy loss over time is given by:
+\begin{equation}
+	\pdv{\epsilon}{t}= -n^2\Lambda(T)=-\left(\frac{\rho}{2.17\times 10^{-24}\;\text{g$\cdot\,$cm}^{-3}}\right)^2\Lambda(T),
+\end{equation}
+where $n$ is the number density of the gas particles, and $\Lambda(T)$ is the cooling function. \\
+After, the shell continues to expand pushed by the hot, overpressurized bubble; at first, the radius grows as $R_s\propto t^{2/7}$ by adiabatic expansion, then, when the bubble radiates its energy away, the shell expands by momentum conservation, with $R_s\propto t^{1/4}$.
 
 \subsection{The simulation}
+We use the usual hydrocode to integrate EUler equations in spherical coordinates. The grid extends from $0$ up to $70$ pc, with $500$ points uniformly spaced. In order to properly deal with the boundary conditions described in Sec.\ref{descrip}, we assign a negative value to the first grid point, i.e. $r_1=-\Delta r$, $r_2=0$, $r_3=\Delta r$, and so on, which makes the point corresponding to $j=3$ the first active point. 
+We assume as ISM the ionized Galactic one, so we use its typical values for the initial density $\rho_0$, and temperature $T_0$. In particular, we have $\rho_0=2.0\times 10^{-24}$ g/cm$^{3}$, and $T_0=10^4$ K. Since we're dealing with ionized gas, we have $\gamma =5/3$, and $c_v=2.0\times 10^{51}$ erg$\cdot\,$cm$^{-1}\cdot\,$K$^{-1}$, where $c_v$ is the specific heat capacity at constant volume. We also set out initial velocity to zero, while we derive $p_0$ and $\epsilon_0$ using the relations $\epsilon_0=c_v\rho_0T_0$ and Eq.\eqref{eqstate}. We take $E_0=10^{51}$ erg/s as a value for the energy injected by the SN in the form of thermal energy. Since we assumed this gets injected into a small volume, we consider it to go into the first two active grid points, which numerically means having to change the energy of points 2 and 3 to:
+\begin{equation}
+	\epsilon_{2+1/2}=\epsilon_{3+1/2}=\frac{E_0}{\frac{4}{3}\pi r_4^3},
+\end{equation}
+with $T$ and $p$ being updated accordingly.\\
+We need a small timestep at the beginning, so we set in Eq.\eqref{timeeq} $C=0.01$ and then we increase it by $10\%$ every cycle up until we get $C=0.5$, then we keep it constant. The artificial viscosity coefficient is still $Q=3$, while we put as total integration time $t_{max}=5\times 10^5$ yr. 
+We also modify the code in order to add the possibility of considering the presence of radiative cooling. For the cooling function, we take as reference the one used in \cite{sharma}, which is given by:
+\begin{equation}\label{coolfu}
+	\Lambda(T)=
+	\begin{cases}
+		10^{-22}(8.6\times 10^{-3}\,T_{keV}^{-1.7}+0.058\,T_{keV}^{0.5}+0.063)\;\text{erg$\cdot\,$cm$^3\cdot\,$s$^{-1}$} \; &\text{if} \; \;T>0.02\,\text{keV}\\
+		6.72\times 10^{-22}(T_{keV}/0.02)^{0.6}\;\text{erg$\cdot\,$cm$^3\cdot\,$s$^{-1}$} \; &\text{if} \; \;T\le0.02\,\text{keV, }T\ge0.0017235\,\text{keV}\\
+		1.54\times 10^{-22}(T_{keV}/0.0017235)^{6}\;\text{erg$\cdot\,$cm$^3\cdot\,$s$^{-1}$} \; &\text{if} \; \;T<0.0017235\,\text{keV},
+	\end{cases}
+\end{equation}
+which we plot in Fig.\ref{fig:coolf}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7 \linewidth]{coolfunction.pdf}
+	\caption{The cooling function defined in Eq.\eqref{coolfu}, plotted for}
+	\label{fig:coolf}
+\end{figure}
 
 \subsection{Results and discussion}
 
