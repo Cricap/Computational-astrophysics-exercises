@@ -5254,3 +5254,275 @@ correlation matrix of the fit parameters:
                 E      d      
 E               1.000 
 d              -1.000  1.000 
+
+
+*******************************************************************************
+Tue Nov 12 19:13:01 2024
+
+
+FIT:    data read from 'Sedov.dat' using 1:3
+        format = x:z
+        function range restricted to [1.00000 : *]
+        x range restricted to [900.000 : 30000.0]
+        #datapoints = 29
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x)=B*x**a
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   B             a            
+   0 3.4221166274e+12   0.00e+00  2.44e+06    2.000000e+01   1.000000e+00
+  68 4.2732938869e-02  -8.96e-04  2.44e-03    3.695373e-01   3.889117e-01
+
+After 68 iterations the fit converged.
+final sum of squares of residuals : 0.0427329
+rel. change during last iteration : -8.96409e-09
+
+degrees of freedom    (FIT_NDF)                        : 27
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0397832
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0015827
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+B               = 0.369537         +/- 0.003145     (0.8511%)
+a               = 0.388912         +/- 0.0008715    (0.2241%)
+
+correlation matrix of the fit parameters:
+                B      a      
+B               1.000 
+a              -0.998  1.000 
+
+
+*******************************************************************************
+Tue Nov 12 19:13:01 2024
+
+
+FIT:    data read from 'Sedov.dat' using 1:3
+        format = x:z
+        function range restricted to [1.00000 : *]
+        x range restricted to [200000. : *]
+        #datapoints = 301
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f1(x)
+	f1(x)=E*x**d
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   E             d            
+   0 1.5657791815e+16   0.00e+00  6.62e+07    2.000000e+01   1.000000e+00
+  47 6.5447004436e-01  -2.19e-01  6.62e-02    3.217016e-01   4.001820e-01
+
+After 47 iterations the fit converged.
+final sum of squares of residuals : 0.65447
+rel. change during last iteration : -2.19227e-06
+
+degrees of freedom    (FIT_NDF)                        : 299
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0467853
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00218886
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+E               = 0.321702         +/- 0.0008385    (0.2606%)
+d               = 0.400182         +/- 0.0002033    (0.0508%)
+
+correlation matrix of the fit parameters:
+                E      d      
+E               1.000 
+d              -1.000  1.000 
+
+
+*******************************************************************************
+Tue Nov 12 19:15:20 2024
+
+
+FIT:    data read from 'Sedov.dat' using 1:3
+        format = x:z
+        function range restricted to [1.00000 : *]
+        x range restricted to [900.000 : 30000.0]
+        #datapoints = 29
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x)=B*x**a
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   B             a            
+   0 1.9155218107e+07   0.00e+00  2.30e+03    2.000000e+01   3.889117e-01
+ 108 4.2732938868e-02  -1.28e-02  2.30e-03    3.695373e-01   3.889117e-01
+
+After 108 iterations the fit converged.
+final sum of squares of residuals : 0.0427329
+rel. change during last iteration : -1.27878e-07
+
+degrees of freedom    (FIT_NDF)                        : 27
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0397832
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0015827
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+B               = 0.369537         +/- 0.003145     (0.8511%)
+a               = 0.388912         +/- 0.0008715    (0.2241%)
+
+correlation matrix of the fit parameters:
+                B      a      
+B               1.000 
+a              -0.998  1.000 
+
+
+*******************************************************************************
+Tue Nov 12 19:15:20 2024
+
+
+FIT:    data read from 'Sedov.dat' using 1:3
+        format = x:z
+        function range restricted to [1.00000 : *]
+        x range restricted to [200000. : *]
+        #datapoints = 301
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f1(x)
+	f1(x)=E*x**d
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   E             d            
+   0 3.1740574268e+09   0.00e+00  1.22e+04    2.000000e+01   4.001820e-01
+ 314 6.5447004162e-01  -4.14e-01  1.22e-02    3.217016e-01   4.001820e-01
+
+After 314 iterations the fit converged.
+final sum of squares of residuals : 0.65447
+rel. change during last iteration : -4.13971e-06
+
+degrees of freedom    (FIT_NDF)                        : 299
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0467853
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00218886
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+E               = 0.321702         +/- 0.0008385    (0.2606%)
+d               = 0.400182         +/- 0.0002033    (0.0508%)
+
+correlation matrix of the fit parameters:
+                E      d      
+E               1.000 
+d              -1.000  1.000 
+
+
+*******************************************************************************
+Tue Nov 12 19:16:36 2024
+
+
+FIT:    data read from "Sedovcool.dat" using 1:3
+        format = x:z
+        function range restricted to [1.00000 : *]
+        x range restricted to [0.00000 : 30000.0]
+        #datapoints = 29
+        residuals are weighted equally (unit weight)
+
+function used for fitting: u(x)
+	u(x)=exp(c)*a*x**b
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b             c            
+   0 9.5465317687e+09   0.00e+00  1.06e+05    3.889117e-01   1.000000e+00   1.000000e+00
+  61 7.4878318269e-02  -1.05e-04  1.06e-04    2.236809e-01   3.862146e-01   5.253060e-01
+
+After 61 iterations the fit converged.
+final sum of squares of residuals : 0.0748783
+rel. change during last iteration : -1.04889e-09
+
+degrees of freedom    (FIT_NDF)                        : 26
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.053665
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00287994
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 0.223681         +/- 1.441e+09    (6.442e+11%)
+b               = 0.386215         +/- 0.001224     (0.317%)
+c               = 0.525306         +/- 6.441e+09    (1.226e+12%)
+
+correlation matrix of the fit parameters:
+                a      b      c      
+a               1.000 
+b               0.279  1.000 
+c              -1.000 -0.279  1.000 
+
+
+*******************************************************************************
+Tue Nov 12 19:16:36 2024
+
+
+FIT:    data read from "Sedovcool.dat" using 1:3
+        format = x:z
+        function range restricted to [1.00000 : *]
+        x range restricted to [30000.0 : 100000.]
+        #datapoints = 71
+        residuals are weighted equally (unit weight)
+
+function used for fitting: u(x)
+	u(x)=exp(c)*a*x**b
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b             c            
+   0 2.8835812464e+02   0.00e+00  6.99e+01    2.236809e-01   3.862146e-01   5.253060e-01
+  58 2.9399163979e-01  -6.34e-01  6.99e-04    4.365643e-01   2.863163e-01   8.959123e-01
+
+After 58 iterations the fit converged.
+final sum of squares of residuals : 0.293992
+rel. change during last iteration : -6.34266e-06
+
+degrees of freedom    (FIT_NDF)                        : 68
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0657526
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00432341
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 0.436564         +/- 2.326e+09    (5.328e+11%)
+b               = 0.286316         +/- 0.0009468    (0.3307%)
+c               = 0.895912         +/- 5.325e+09    (5.944e+11%)
+
+correlation matrix of the fit parameters:
+                a      b      c      
+a               1.000 
+b              -0.029  1.000 
+c              -1.000  0.029  1.000 
+
+
+*******************************************************************************
+Tue Nov 12 19:16:36 2024
+
+
+FIT:    data read from "Sedovcool.dat" using 1:3
+        format = x:z
+        function range restricted to [1.00000 : *]
+        x range restricted to [100000. : *]
+        #datapoints = 401
+        residuals are weighted equally (unit weight)
+
+function used for fitting: u(x)
+	u(x)=exp(c)*a*x**b
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b             c            
+   0 4.2047215254e+02   0.00e+00  8.74e+01    4.365643e-01   2.863163e-01   8.959123e-01
+   7 1.5360323688e+00  -7.65e-07  8.74e-04    3.726333e-01   3.096986e-01   7.829673e-01
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 1.53603
+rel. change during last iteration : -7.65387e-12
+
+degrees of freedom    (FIT_NDF)                        : 398
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0621239
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00385938
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 0.372633         +/- 3.567e+08    (9.571e+10%)
+b               = 0.309699         +/- 0.0001932    (0.06237%)
+c               = 0.782967         +/- 9.567e+08    (1.222e+11%)
+
+correlation matrix of the fit parameters:
+                a      b      c      
+a               1.000 
+b               0.045  1.000 
+c              -1.000 -0.045  1.000 

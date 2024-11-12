@@ -13,22 +13,26 @@ set logscale
 set format y "%T"
  set format x "%T"
 
+ set grid 
+set size square
+set key top left font ",5
  set xlabel "Log(r) in pc"
  set ylabel "Density"
- plot "resultssncool07.dat" using 2:3 t '2' w l, "resultssncool08.dat" using 2:3 t '3' w l, "resultssncool09.dat" using 2:3 t '4' w l, "resultssncool10.dat" using 2:3 t '5' w l
-
+ plot "resultssncool07.dat" using 2:3 t 't=2*10^{5}' w l, "resultssncool08.dat" using 2:3 t 't=3*10^{5}' w l, "resultssncool09.dat" using 2:3 t 't=4*10^{5}' w l, "resultssncool10.dat" using 2:3 t 't=5*10^{5}' w l
+set key bottom left font ",5
  set xlabel "Log(r) in pc"
  set ylabel "Pressure"
- plot "resultssncool07.dat" using 2:6 t '' w l, "resultssncool08.dat" using 2:6 t '' w l, "resultssncool09.dat" using 2:6 t '' w l, "resultssncool10.dat" using 2:6 t '' w l
- set format y "%g"
+ plot "resultssncool07.dat" using 2:6 t 't=2*10^{5}' w l, "resultssncool08.dat" using 2:6 t 't=3*10^{5}' w l, "resultssncool09.dat" using 2:6 t 't=4*10^{5}' w l, "resultssncool10.dat" using 2:6 t 't=5*10^{5}' w l
+ set key top left font ",5
  unset logscale
  set logscale x
+ set format y "%g"
  set xlabel "Log(r) in pc"
- set ylabel "Velocity"
- plot "resultssncool07.dat" using 2:4 t '' w l, "resultssncool08.dat" using 2:4 t '' w l, "resultssncool09.dat" using 2:4 t '' w l, "resultssncool10.dat" using 2:4 t '' w l
- set format y "%T"
+ set ylabel "Velocity (cm/s)"
+ plot "resultssncool07.dat" using 2:4 t 't=2*10^{5}' w l, "resultssncool08.dat" using 2:4 t 't=3*10^{5}' w l, "resultssncool09.dat" using 2:4 t 't=4*10^{5}' w l, "resultssncool10.dat" using 2:4 t 't=5*10^{5}' w l
+ set key bottom left font ",5
  set logscale y
+ set format y "%T"
  set xlabel "Log(r) in pc"
  set ylabel "log(T)"
- set key
- plot "resultssncool07.dat" using 2:7 t '2' w l, "resultssncool08.dat" using 2:7 t '3' w l, "resultssncool09.dat" using 2:7 t '4' w l, "resultssncool10.dat" using 2:7 t '5' w l
+ plot "resultssncool07.dat" using 2:7 t 't=2*10^{5}' w l, "resultssncool08.dat" using 2:7 t 't=3*10^{5}' w l, "resultssncool09.dat" using 2:7 t 't=4*10^{5}' w l, "resultssncool10.dat" using 2:7 t 't=5*10^{5}' w l

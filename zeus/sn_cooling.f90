@@ -435,11 +435,9 @@ if (coord==0) then
 z1(N)=z1(N-1)
 end if
 if (coord == 1) then
-z1(2)=0.
-z1(1)=-z1(3)
-z1(N)=z1(N-1)     
-z1(N)=-z1(N-2)
-z1(N-1)=0
+	z1(2)=0.
+	z1(1)=-z1(3)
+	z1(N)=z1(N-1) 
 end if
 coord=coord
 END SUBROUTINE BCa

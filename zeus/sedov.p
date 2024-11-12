@@ -8,7 +8,9 @@ set termopt enhanced
  unset title
  set xtic auto # set xtics automatically
  set ytic auto # set ytics automatically
-set logscale 
+set logscale
+set size square
+set grid 
 set format y "%T"
  set format x "%T"
 f(x)=B*x**a

@@ -9,6 +9,8 @@ set termopt enhanced
  set xtic auto # set xtics automatically
  set ytic auto # set ytics automatically
 set logscale
+set size square
+set grid 
 set format y "%T"
  set format x "%T"
 u(x)=exp(c)*a*x**b
