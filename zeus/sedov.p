@@ -23,4 +23,4 @@ set xrange [900: 5e5]
 fit[900:3.e4][1:]f(x) 'Sedov.dat' using 1:3 via B,a
 fit[2e5:*][1:] f1(x) 'Sedov.dat' using 1:3 via E,d
 
- plot "Sedov.dat" using 1:2 t '' w l, "Sedov.dat" u 1:3 t '' w p pt 6, f(x) lt rgb "red", f1(x) lt rgb "red"
+ plot "Sedov.dat" using 1:2 t '' w l, "Sedov.dat" u 1:3 t '' w p pt 6, f(x) lt rgb "yellow", f1(x) lt rgb "yellow"

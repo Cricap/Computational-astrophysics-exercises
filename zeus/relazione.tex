@@ -223,31 +223,41 @@ We calculate the following quantities every $10^3$ yr:
 \end{itemize}
 We will discuss the results in the next section.
 \subsection{Results and discussion}
+We first show $\rho,\,p,\,v,$ and $T$ as a function of $r$ in the adiabatic case (i.e. the one without radiative cooling). In Fig.\ref{fig:radialpr} we show the plots for $t=10^4,\,2\times10^4,\,4\times10^4,\,6\times10^4,\,8\times 10^4,$ and $10^5$ yr, while in Fig.\ref{fig:radialprhight} we show them for 
+$t=2\times10^5,\,3\times10^5,\,4\times10^5,$ and $5\times10^5$ yr. We can clearly see the discrepancies between behind, during, and in front of the shock: behind we have a hot bubble with a low density and nearly constant pressure (which decreases with time), with the shock being characterized with a peak in the density at $\sim 7\times 10^{-24}$ g$\cdot$cm$^{-3}$,
+with the profiles of $\rho,\,p,$ and $v$ moving outwards with time, flagging the position of the shell. We can see a progressive decrease in the temperature as the remnant expands.\\
+We then show the same profiles but in the case with radiative cooling present. In Fig.\ref{fig:radialprcool} we show the plots for $t=10^4,\,2\times10^4,\,4\times10^4,\,6\times10^4,\,8\times 10^4,$ and $10^5$ yr, while in Fig.\ref{fig:radialprhightcool} we show them for 
+$t=2\times10^5,\,3\times10^5,\,4\times10^5,$ and $5\times10^5$ yr. Here, we can see how the density profiles have higher peaks with higher times, which is what we expected in the presence of cooling. \\
+In Fig.\ref{fig:sedov} we plot the shock radius as function of time. In the adiabatic case (on the left), we can see how it's pretty much in agreement with the Sedov law; 
+we fit the data with a line in the timeranges $t\le3\times 10^{4},$ and $t\ge 2\times 10^5$, obtaining as best fit-values for the time exponent $ 0.3889\pm 0.0009$ and $0.4002\pm 0.0002$ respectively, with both values being really close to the theoretical value $0.4$. On the right we have the case with radiative cooling: here we can see a deviation from the analytical case at around $\sim 3\times 10^4$ yr, which coincide with a drop in the thermal energy, as shown in Fig.\ref{fig:energy} on the right. This means that the ISM retains kinetic energy better than the thermal one. Here, we fit the data with a line in the timeranges $t\le3\times 10^{4},\,3\times10^4\le t\le 10^5,$ and $t\ge 10^5$, obtaining as best fit-values for the time exponent 
+$0.3862\pm0.0012$, $0.2863\pm 0.0009$, and $0.3097\pm 0.0002$, which are to be compared to $2/5,\,2/7,$ and $1/4$ respectively.\\
+We also checked the conservation of energy as shown in Fig.\ref{fig:energy}
 
-\begin{figure}[H]
+
+\begin{figure}[H] 
 	\centering
-	\includegraphics[width=0.8 \linewidth]{radialprofiles.pdf}
+	\includegraphics[width=1 \linewidth]{radialprofiles.pdf}
 	\caption{From left to right and top to bottom: $\rho,\,p,\,v,$ and $T$ profiles of the ISM computed at times $t=10^4,\,2\times10^4,\,4\times10^4,\,6\times10^4,\,8\times 10^4,$ and $10^5$ yr.}
 
 	\label{fig:radialpr}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8 \linewidth]{radialprofileshight.pdf}
+	\includegraphics[width=1 \linewidth]{radialprofileshight.pdf}
 	\caption{From left to right and top to bottom: $\rho,\,p,\,v,$ and $T$ profiles of the ISM computed at times $t=2\times10^5,\,3\times10^5,\,4\times10^5,$ and $5\times10^5$ yr.}
 
 	\label{fig:radialprhight}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8 \linewidth]{radialprofilescool.pdf}
+	\includegraphics[width=1 \linewidth]{radialprofilescool.pdf}
 	\caption{From left to right and top to bottom: $\rho,\,p,\,v,$ and $T$ profiles of the ISM for the radiative cooling model computed at times $t=10^4,\,2\times10^4,\,4\times10^4,\,6\times10^4,\,8\times 10^4,$ and $10^5$ yr.}
 
 	\label{fig:radialprcool}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8 \linewidth]{radialprofileshightcool.pdf}
+	\includegraphics[width=1 \linewidth]{radialprofileshightcool.pdf}
 	\caption{From left to right and top to bottom: $\rho,\,p,\,v,$ and $T$ profiles of the ISM for the radiative cooling model computed at times $t=2\times10^5,\,3\times10^5,\,4\times10^5,$ and $5\times10^5$ yr.}
 
 
@@ -262,7 +272,7 @@ We will discuss the results in the next section.
 		\centering
 		\includegraphics[width=1 \linewidth]{sedovcool.pdf}
 	\end{subfigure}
-	\caption{The position of $R_s$ as a function of time computed every $10^3$ (green circles). On the left we have the adiabatic model with Sedov law in fucsia and a fitting line going as $\sim t^{2/7}$ in red, while on the right we have the model with radiative cooling with the analytical function in purple and a fitting line going as $\sim t^{1/4}$ in red.}
+	\caption{The position of $R_s$ as a function of time computed every $10^3$ (green circles). On the left we have the adiabatic model with Sedov law in red and a fitting line going as $\sim t^{2/5}$ in yellow, while on the right we have the model with radiative cooling with the analytical function in purple and a fitting line going as $\sim t^{1/4}$ in red.}
 
 	\label{fig:sedov}
 \end{figure}
@@ -281,7 +291,7 @@ We will discuss the results in the next section.
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8 \linewidth]{luminosity.pdf}
+	\includegraphics[width=0.6 \linewidth]{luminosity.pdf}
 	\caption{The X-ray luminosity as a function of time computed every $10^3$ yr for the adiabatic model (purple) and for the one with radiative cooling (green).}
 
 	\label{fig:luminosity}

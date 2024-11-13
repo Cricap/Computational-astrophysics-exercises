@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.10.7)  12 NOV 2024 21:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.10.7)  13 NOV 2024 21:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -399,79 +399,80 @@ File: coolfunction.pdf Graphic file (type pdf)
 <use coolfunction.pdf>
 Package pdftex.def Info: coolfunction.pdf  used on input line 195.
 (pdftex.def)             Requested size: 354.12144pt x 265.59364pt.
-<radialprofiles.pdf, id=94, 642.4pt x 481.8pt>
+ [7 <./coolfunction.pdf>]
+<radialprofiles.pdf, id=111, 642.4pt x 481.8pt>
 File: radialprofiles.pdf Graphic file (type pdf)
 <use radialprofiles.pdf>
-Package pdftex.def Info: radialprofiles.pdf  used on input line 229.
-(pdftex.def)             Requested size: 404.71353pt x 303.54295pt.
-<radialprofileshight.pdf, id=95, 642.4pt x 481.8pt>
+Package pdftex.def Info: radialprofiles.pdf  used on input line 239.
+(pdftex.def)             Requested size: 505.89pt x 379.42685pt.
+<radialprofileshight.pdf, id=112, 642.4pt x 481.8pt>
 File: radialprofileshight.pdf Graphic file (type pdf)
 <use radialprofileshight.pdf>
-Package pdftex.def Info: radialprofileshight.pdf  used on input line 236.
-(pdftex.def)             Requested size: 404.71353pt x 303.54295pt.
- [7 <./coolfunction.pdf>]
-<radialprofilescool.pdf, id=113, 642.4pt x 481.8pt>
+Package pdftex.def Info: radialprofileshight.pdf  used on input line 246.
+(pdftex.def)             Requested size: 505.89pt x 379.42685pt.
+ [8]
+<radialprofilescool.pdf, id=116, 642.4pt x 481.8pt>
 File: radialprofilescool.pdf Graphic file (type pdf)
 <use radialprofilescool.pdf>
-Package pdftex.def Info: radialprofilescool.pdf  used on input line 243.
-(pdftex.def)             Requested size: 404.71353pt x 303.54295pt.
- [8 <./radialprofiles.pdf>]
-<radialprofileshightcool.pdf, id=127, 642.4pt x 481.8pt>
+Package pdftex.def Info: radialprofilescool.pdf  used on input line 253.
+(pdftex.def)             Requested size: 505.89pt x 379.42685pt.
+ [9 <./radialprofiles.pdf>]
+<radialprofileshightcool.pdf, id=130, 642.4pt x 481.8pt>
 File: radialprofileshightcool.pdf Graphic file (type pdf)
 <use radialprofileshightcool.pdf>
-Package pdftex.def Info: radialprofileshightcool.pdf  used on input line 250.
-(pdftex.def)             Requested size: 404.71353pt x 303.54295pt.
- [9 <./radialprofileshight.pdf>]
-<sedov.pdf, id=141, 642.4pt x 481.8pt>
+Package pdftex.def Info: radialprofileshightcool.pdf  used on input line 260.
+(pdftex.def)             Requested size: 505.89pt x 379.42685pt.
+ [10 <./radialprofileshight.pdf>]
+<sedov.pdf, id=144, 642.4pt x 481.8pt>
 File: sedov.pdf Graphic file (type pdf)
 <use sedov.pdf>
-Package pdftex.def Info: sedov.pdf  used on input line 259.
+Package pdftex.def Info: sedov.pdf  used on input line 269.
 (pdftex.def)             Requested size: 252.94499pt x 189.70975pt.
-<sedovcool.pdf, id=142, 642.4pt x 481.8pt>
+<sedovcool.pdf, id=145, 642.4pt x 481.8pt>
 File: sedovcool.pdf Graphic file (type pdf)
 <use sedovcool.pdf>
-Package pdftex.def Info: sedovcool.pdf  used on input line 263.
+Package pdftex.def Info: sedovcool.pdf  used on input line 273.
 (pdftex.def)             Requested size: 252.94499pt x 189.70975pt.
 
-Overfull \hbox (2.22166pt too wide) in paragraph at lines 257--265
+Overfull \hbox (2.22166pt too wide) in paragraph at lines 267--275
 []$[]$ $[]$ 
  []
 
-[10 <./radialprofilescool.pdf>]
-<energy.pdf, id=156, 642.4pt x 481.8pt>
+[11 <./radialprofilescool.pdf>]
+<energy.pdf, id=159, 642.4pt x 481.8pt>
 File: energy.pdf Graphic file (type pdf)
 <use energy.pdf>
-Package pdftex.def Info: energy.pdf  used on input line 272.
+Package pdftex.def Info: energy.pdf  used on input line 282.
 (pdftex.def)             Requested size: 252.94499pt x 189.70975pt.
-<energycool.pdf, id=157, 642.4pt x 481.8pt>
+<energycool.pdf, id=160, 642.4pt x 481.8pt>
 File: energycool.pdf Graphic file (type pdf)
 <use energycool.pdf>
-Package pdftex.def Info: energycool.pdf  used on input line 276.
+Package pdftex.def Info: energycool.pdf  used on input line 286.
 (pdftex.def)             Requested size: 252.94499pt x 189.70975pt.
 
-Overfull \hbox (2.22166pt too wide) in paragraph at lines 270--278
+Overfull \hbox (2.22166pt too wide) in paragraph at lines 280--288
 []$[]$ $[]$ 
  []
 
-<luminosity.pdf, id=158, 642.4pt x 481.8pt>
+<luminosity.pdf, id=161, 642.4pt x 481.8pt>
 File: luminosity.pdf Graphic file (type pdf)
 <use luminosity.pdf>
-Package pdftex.def Info: luminosity.pdf  used on input line 284.
-(pdftex.def)             Requested size: 404.71353pt x 303.54295pt.
-[11 <./radialprofileshightcool.pdf> <./sedov.pdf> <./sedovcool.pdf>] [12 <./energy.pdf> <./energycool.pdf> <./luminosity.pdf>] [13] (./relazione.aux) ) 
+Package pdftex.def Info: luminosity.pdf  used on input line 294.
+(pdftex.def)             Requested size: 303.53708pt x 227.65904pt.
+[12 <./radialprofileshightcool.pdf> <./sedov.pdf> <./sedovcool.pdf>] [13 <./energy.pdf> <./energycool.pdf> <./luminosity.pdf>] [14] (./relazione.aux) ) 
 Here is how much of TeX's memory you used:
  6697 strings out of 478287
  105261 string characters out of 5849289
- 411430 words of memory out of 5000000
+ 413431 words of memory out of 5000000
  24782 multiletter control sequences out of 15000+600000
  486305 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,12n,77p,929b,386s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 68i,12n,77p,929b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0700.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb>
-Output written on relazione.pdf (13 pages, 864791 bytes).
+Output written on relazione.pdf (14 pages, 868244 bytes).
 PDF statistics:
- 313 PDF objects out of 1000 (max. 8388607)
- 197 compressed objects within 2 object streams
+ 316 PDF objects out of 1000 (max. 8388607)
+ 199 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
