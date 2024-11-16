@@ -53,10 +53,7 @@ Since we are dealing with shocks, we need to add a dissipation term, namely an \
 		0 \quad &\text{otherwise},
 	\end{cases}
 \end{equation} 
-with $Q=const$. The artificial viscosity is added to the pressure in the hydro equations.\\
-
-\textcolor{red}{Add reference}\\
-
+with $Q=const$. The artificial viscosity is added to the pressure in the hydro equations, see \cite{vonneuman} for further information.\\
 After setting the initial conditions, we can start the time integration, where at the beginning of each cycle we have to compute the timestep $\Delta t$. The latter has to satisfy the Courant-Friedrichs-Lewy (CFL) condition for stability, so we set $\Delta t$ as:
 \begin{equation}\label{timeeq}
 	\Delta t=C\min_{j}{\frac{x_{j+1/2}-x_{j-1/2}}{\abs{v}+c_{s,j}}} \qquad C\in \left]0,1\right[,
@@ -228,12 +225,6 @@ $t=2\times10^5,\,3\times10^5,\,4\times10^5,$ and $5\times10^5$ yr. We can clearl
 with the profiles of $\rho,\,p,$ and $v$ moving outwards with time, flagging the position of the shell. We can see a progressive decrease in the temperature as the remnant expands.\\
 We then show the same profiles but in the case with radiative cooling present. In Fig.\ref{fig:radialprcool} we show the plots for $t=10^4,\,2\times10^4,\,4\times10^4,\,6\times10^4,\,8\times 10^4,$ and $10^5$ yr, while in Fig.\ref{fig:radialprhightcool} we show them for 
 $t=2\times10^5,\,3\times10^5,\,4\times10^5,$ and $5\times10^5$ yr. Here, we can see how the density profiles have higher peaks with higher times, which is what we expected in the presence of cooling. \\
-In Fig.\ref{fig:sedov} we plot the shock radius as function of time. In the adiabatic case (on the left), we can see how it's pretty much in agreement with the Sedov law; 
-we fit the data with a line in the timeranges $t\le3\times 10^{4},$ and $t\ge 2\times 10^5$, obtaining as best fit-values for the time exponent $ 0.3889\pm 0.0009$ and $0.4002\pm 0.0002$ respectively, with both values being really close to the theoretical value $0.4$. On the right we have the case with radiative cooling: here we can see a deviation from the analytical case at around $\sim 3\times 10^4$ yr, which coincide with a drop in the thermal energy, as shown in Fig.\ref{fig:energy} on the right. This means that the ISM retains kinetic energy better than the thermal one. Here, we fit the data with a line in the timeranges $t\le3\times 10^{4},\,3\times10^4\le t\le 10^5,$ and $t\ge 10^5$, obtaining as best fit-values for the time exponent 
-$0.3862\pm0.0012$, $0.2863\pm 0.0009$, and $0.3097\pm 0.0002$, which are to be compared to $2/5,\,2/7,$ and $1/4$ respectively.\\
-We also checked the conservation of energy as shown in Fig.\ref{fig:energy}
-
-
 \begin{figure}[H] 
 	\centering
 	\includegraphics[width=1 \linewidth]{radialprofiles.pdf}
@@ -263,6 +254,14 @@ We also checked the conservation of energy as shown in Fig.\ref{fig:energy}
 
 	\label{fig:radialprhightcool}
 \end{figure}
+
+
+In Fig.\ref{fig:sedov} we plot the shock radius as function of time. In the adiabatic case (on the left), we can see how it's pretty much in agreement with the Sedov law; 
+we fit the data with a line in the timeranges $t\le3\times 10^{4},$ and $t\ge 2\times 10^5$, obtaining as best fit-values for the time exponent $ 0.3889\pm 0.0009$ and $0.4002\pm 0.0002$ respectively, with both values being really close to the theoretical value $0.4$. On the right we have the case with radiative cooling: here we can see a deviation from the analytical case at around $\sim 3\times 10^4$ yr, which coincide with a drop in the thermal energy, as shown in Fig.\ref{fig:energy} on the right. This means that the ISM retains kinetic energy better than the thermal one. Here, we fit the data with a line in the timeranges $t\le3\times 10^{4},\,3\times10^4\le t\le 10^5,$ and $t\ge 10^5$, obtaining as best fit-values for the time exponent 
+$0.3862\pm0.0012$, $0.2863\pm 0.0009$, and $0.3097\pm 0.0002$, which are to be compared to $2/5,\,2/7,$ and $1/4$ respectively.\\
+We also checked the conservation of energy as shown in Fig.\ref{fig:energy}, where on the right we have the adiabatic model: we can see that the total energy is not conserved, instead undergoing a slight deacrease, probably due to the fact that we used numerical methods for the simulation. On the right of Fig. \ref{fig:energy} we can instead see the radiative cooling model: as previously mentioned, we can observe a drop in the thermal energy, meaning kinetic energy is better kept in the ISM.\\
+The last thing we want to talk about is the X-ray luminosity, plotted in Fig.\ref{fig:luminosity}. The curves show basically the same profile up to the peak at around $t\approx 3\times 10^4$, after which they start to separate due to radiative cooling becoming more effective, causing a faster decrease in temperature. Assuming before and after the peak we can use power laws to describe the luminosity curve (with $L_X\propto t^{\alpha}$), we try to fit the data between $6\times 10^3\le t\le 2.5\times 10^4$ and $3.2\times 10^4\le t\le 10^5$ yr, obtaining $\alpha^{pre}=1.99\pm0.05$, $\alpha^{pre}_{cool}=2.00\pm0.11$, $\alpha^{post}=-3.19\pm0.13$, and $\alpha^{post}_{cool}=-4.55\pm0.19$. We show the fit results in Fig.\ref{fig:luminosityfit}.
+
 \begin{figure}[H]
 	\begin{subfigure}{0.5 \linewidth}
 		\centering
@@ -296,9 +295,17 @@ We also checked the conservation of energy as shown in Fig.\ref{fig:energy}
 
 	\label{fig:luminosity}
 \end{figure}
-\section*{Conclusions}
 
-\begin{thebibliography}{5}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8 \linewidth]{luminosityfit.pdf}
+	\caption{The X-ray luminosity as a function of time computed every $10^3$ yr for the adiabatic model (purple) and for the one with radiative cooling (green). On the left: best fit lines for before the peak, red for the adiabatic model and lightblue for the one with radiative cooling. On the right:  best fit lines for after the peak, red for the adiabatic model and lightblue for the one with radiative cooling.}
+
+	\label{fig:luminosityfit}
+\end{figure}
+\section*{Conclusions}
+We start with testing a 1D hydrocode, utilizing three different shock tubes. We then try to simulate the evolution of a SNR using numerical simulation for both an adiabatic model and a radiative cooling one, and we show that radiative losses become important after $t\approx 3\times 10^4$ yr after the SN explosion. We also check the evolution of different quantities with their dependance on time, which reproduces the theoretical behaviour, as well as the evolution of the shock radius and how much it's in accordance with the Sedov law except that with cooling it deviates from it at $\sim 3\times 10^4$ yr due to a drop in the thermal energy. We also show the plots with the profiles of the energies, showing that the total energy is unfortunately not conserved, probably due to the numerical origin of the simulation. We lastly show the X-ray luminosity and how it varies when we factor in radiative cooling, obtaining that the latter causes it to decrease faster. 
+\begin{thebibliography}{6}
 	\bibitem{cimatti}
 	A. Cimatti, F. Fraternali, and C. Nipoti. Introduction to Galaxy Formation and Evolution.
 From Primordial Gas to Present-Day Galaxies. Cambridge University Press, 2020.
@@ -306,6 +313,8 @@ From Primordial Gas to Present-Day Galaxies. Cambridge University Press, 2020.
 	J. F. Hawley, L. L. Smarr, and J. R. Wilson. “A numerical study of nonspherical
 black hole accretion. II - Finite differencing and code calibrations”. In: ApJS
 55 (1984), pp. 211–246. doi: https://doi.org/10.1086/190953.
+\bibitem{vonneuman}
+Von Neumann, J. and Richtmyer, R. D., “A Method for the Numerical Calculation of Hydrodynamic Shocks”, \textit{Journal of Applied Physics}, vol. 21, no. 3, AIP, pp. 232–237, 1950. doi:10.1063/1.1699639.
 \bibitem{omang}
 M. Omang, J.K. Trulsen, and S. Børve. “SPH in spherical and cylindrical
 coordinates”. In: J. Comput. Phys. 213 (2006), pp. 391–412. doi: https :

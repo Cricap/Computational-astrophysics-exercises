@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.10.7)  2 NOV 2024 14:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.10.7)  16 NOV 2024 16:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -312,119 +312,118 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-<dm_mass_profile.png, id=23, 953.06062pt x 493.845pt>
-File: dm_mass_profile.png Graphic file (type png)
-<use dm_mass_profile.png>
-Package pdftex.def Info: dm_mass_profile.png  used on input line 130.
-(pdftex.def)             Requested size: 223.09846pt x 115.60146pt.
-<mass_profiles.png, id=24, 1434.86063pt x 704.6325pt>
-File: mass_profiles.png Graphic file (type png)
-<use mass_profiles.png>
-Package pdftex.def Info: mass_profiles.png  used on input line 133.
-(pdftex.def)             Requested size: 223.09846pt x 109.55022pt.
-<density_profiles.png, id=25, 1434.86063pt x 704.6325pt>
-File: density_profiles.png Graphic file (type png)
-<use density_profiles.png>
-Package pdftex.def Info: density_profiles.png  used on input line 146.
-(pdftex.def)             Requested size: 505.89pt x 248.43138pt.
-<rhoiso.png, id=26, 481.8pt x 361.35pt>
+<dm_mass_profile.pdf, id=23, 642.4pt x 481.8pt>
+File: dm_mass_profile.pdf Graphic file (type pdf)
+<use dm_mass_profile.pdf>
+Package pdftex.def Info: dm_mass_profile.pdf  used on input line 130.
+(pdftex.def)             Requested size: 247.88887pt x 185.91629pt.
+<mass_profiles.pdf, id=24, 642.4pt x 481.8pt>
+File: mass_profiles.pdf Graphic file (type pdf)
+<use mass_profiles.pdf>
+Package pdftex.def Info: mass_profiles.pdf  used on input line 133.
+(pdftex.def)             Requested size: 247.88887pt x 185.91629pt.
+<density.pdf, id=25, 642.4pt x 481.8pt>
+File: density.pdf Graphic file (type pdf)
+<use density.pdf>
+Package pdftex.def Info: density.pdf  used on input line 146.
+(pdftex.def)             Requested size: 349.06532pt x 261.80754pt.
+ [3 <./dm_mass_profile.pdf> <./mass_profiles.pdf>]
+<rhoiso.png, id=52, 481.8pt x 361.35pt>
 File: rhoiso.png Graphic file (type png)
 <use rhoiso.png>
-Package pdftex.def Info: rhoiso.png  used on input line 152.
-(pdftex.def)             Requested size: 505.89pt x 379.4287pt.
- [3 <./dm_mass_profile.png (PNG copy)> <./mass_profiles.png (PNG copy)>]
-<temprofiles.png, id=33, 481.8pt x 361.35pt>
+Package pdftex.def Info: rhoiso.png  used on input line 153.
+(pdftex.def)             Requested size: 349.06532pt x 261.80386pt.
+<temprofiles.png, id=53, 481.8pt x 361.35pt>
 File: temprofiles.png Graphic file (type png)
 <use temprofiles.png>
-Package pdftex.def Info: temprofiles.png  used on input line 158.
+Package pdftex.def Info: temprofiles.png  used on input line 159.
 (pdftex.def)             Requested size: 247.88887pt x 185.91261pt.
-<rebrho.png, id=34, 481.8pt x 361.35pt>
+<rebrho.png, id=54, 481.8pt x 361.35pt>
 File: rebrho.png Graphic file (type png)
 <use rebrho.png>
-Package pdftex.def Info: rebrho.png  used on input line 161.
+Package pdftex.def Info: rebrho.png  used on input line 162.
 (pdftex.def)             Requested size: 247.88887pt x 185.91261pt.
- [4 <./density_profiles.png (PNG copy)>] [5 <./rhoiso.png (PNG copy)> <./temprofiles.png (PNG copy)> <./rebrho.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 202--204
+ [4 <./density.pdf> <./rhoiso.png (PNG copy)>] [5 <./temprofiles.png (PNG copy)> <./rebrho.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 203--205
 
  []
 
 [6]
-<Z_diff_1.png, id=44, 481.8pt x 361.35pt>
+<Z_diff_1.png, id=74, 481.8pt x 361.35pt>
 File: Z_diff_1.png Graphic file (type png)
 <use Z_diff_1.png>
-Package pdftex.def Info: Z_diff_1.png  used on input line 242.
+Package pdftex.def Info: Z_diff_1.png  used on input line 243.
 (pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
-<Z_diff_2.png, id=45, 481.8pt x 361.35pt>
+<Z_diff_2.png, id=75, 481.8pt x 361.35pt>
 File: Z_diff_2.png Graphic file (type png)
 <use Z_diff_2.png>
-Package pdftex.def Info: Z_diff_2.png  used on input line 245.
+Package pdftex.def Info: Z_diff_2.png  used on input line 246.
 (pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
-<Z_diff_5.png, id=46, 481.8pt x 361.35pt>
+<Z_diff_5.png, id=76, 481.8pt x 361.35pt>
 File: Z_diff_5.png Graphic file (type png)
 <use Z_diff_5.png>
-Package pdftex.def Info: Z_diff_5.png  used on input line 248.
+Package pdftex.def Info: Z_diff_5.png  used on input line 249.
 (pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
- [7]
-<Z_source_1.png, id=51, 481.8pt x 361.35pt>
+<Z_source_1.png, id=77, 481.8pt x 361.35pt>
 File: Z_source_1.png Graphic file (type png)
 <use Z_source_1.png>
-Package pdftex.def Info: Z_source_1.png  used on input line 258.
+Package pdftex.def Info: Z_source_1.png  used on input line 259.
 (pdftex.def)             Requested size: 227.64894pt x 170.73326pt.
-<Z_source_2.png, id=52, 481.8pt x 361.35pt>
+<Z_source_2.png, id=78, 481.8pt x 361.35pt>
 File: Z_source_2.png Graphic file (type png)
 <use Z_source_2.png>
-Package pdftex.def Info: Z_source_2.png  used on input line 261.
+Package pdftex.def Info: Z_source_2.png  used on input line 262.
 (pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
-<Z_source_5.png, id=53, 481.8pt x 361.35pt>
+<Z_source_5.png, id=79, 481.8pt x 361.35pt>
 File: Z_source_5.png Graphic file (type png)
 <use Z_source_5.png>
-Package pdftex.def Info: Z_source_5.png  used on input line 264.
+Package pdftex.def Info: Z_source_5.png  used on input line 265.
 (pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
-<femass_comparison.png, id=54, 481.8pt x 361.35pt>
+<femass_comparison.png, id=80, 481.8pt x 361.35pt>
 File: femass_comparison.png Graphic file (type png)
 <use femass_comparison.png>
-Package pdftex.def Info: femass_comparison.png  used on input line 267.
+Package pdftex.def Info: femass_comparison.png  used on input line 268.
 (pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
- [8 <./Z_diff_1.png (PNG copy)> <./Z_diff_2.png (PNG copy)> <./Z_diff_5.png (PNG copy)>]
-<Z_diffsource_1.png, id=58, 481.8pt x 361.35pt>
+ [7 <./Z_diff_1.png (PNG copy)> <./Z_diff_2.png (PNG copy)> <./Z_diff_5.png (PNG copy)>]
+<Z_diffsource_1.png, id=85, 481.8pt x 361.35pt>
 File: Z_diffsource_1.png Graphic file (type png)
 <use Z_diffsource_1.png>
-Package pdftex.def Info: Z_diffsource_1.png  used on input line 276.
+Package pdftex.def Info: Z_diffsource_1.png  used on input line 277.
 (pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
-<Z_diffsource_2.png, id=59, 481.8pt x 361.35pt>
+<Z_diffsource_2.png, id=86, 481.8pt x 361.35pt>
 File: Z_diffsource_2.png Graphic file (type png)
 <use Z_diffsource_2.png>
-Package pdftex.def Info: Z_diffsource_2.png  used on input line 279.
+Package pdftex.def Info: Z_diffsource_2.png  used on input line 280.
 (pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
-<Z_diffsource_5.png, id=60, 481.8pt x 361.35pt>
+<Z_diffsource_5.png, id=87, 481.8pt x 361.35pt>
 File: Z_diffsource_5.png Graphic file (type png)
 <use Z_diffsource_5.png>
-Package pdftex.def Info: Z_diffsource_5.png  used on input line 282.
+Package pdftex.def Info: Z_diffsource_5.png  used on input line 283.
 (pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
-<Z_diffsource_8.png, id=61, 481.8pt x 361.35pt>
+<Z_diffsource_8.png, id=88, 481.8pt x 361.35pt>
 File: Z_diffsource_8.png Graphic file (type png)
 <use Z_diffsource_8.png>
-Package pdftex.def Info: Z_diffsource_8.png  used on input line 285.
+Package pdftex.def Info: Z_diffsource_8.png  used on input line 286.
 (pdftex.def)             Requested size: 223.09846pt x 167.32025pt.
 
-Underfull \hbox (badness 6725) in paragraph at lines 275--287
+Underfull \hbox (badness 6725) in paragraph at lines 276--288
 []$[]$ $[]$
  []
 
-[9 <./Z_source_1.png (PNG copy)> <./Z_source_2.png (PNG copy)> <./Z_source_5.png (PNG copy)> <./femass_comparison.png (PNG copy)>] [10 <./Z_diffsource_1.png (PNG copy)> <./Z_diffsource_2.png (PNG copy)> <./Z_diffsource_5.png (PNG copy)> <./Z_diffsource_8.png (PNG copy)>] [11] (./relazione.aux) ) 
+[8 <./Z_source_1.png (PNG copy)> <./Z_source_2.png (PNG copy)> <./Z_source_5.png (PNG copy)> <./femass_comparison.png (PNG copy)>] [9 <./Z_diffsource_1.png (PNG copy)> <./Z_diffsource_2.png (PNG copy)> <./Z_diffsource_5.png (PNG copy)> <./Z_diffsource_8.png (PNG copy)>] [10] (./relazione.aux) ) 
 Here is how much of TeX's memory you used:
  5425 strings out of 478287
- 85522 string characters out of 5849289
+ 85531 string characters out of 5849289
  398528 words of memory out of 5000000
  23563 multiletter control sequences out of 15000+600000
  477803 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,13n,77p,840b,393s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on relazione.pdf (11 pages, 762530 bytes).
+Output written on relazione.pdf (10 pages, 703417 bytes).
 PDF statistics:
- 143 PDF objects out of 1000 (max. 8388607)
- 78 compressed objects within 1 object stream
+ 170 PDF objects out of 1000 (max. 8388607)
+ 97 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  86 words of extra memory for PDF output out of 10000 (max. 10000000)
 
