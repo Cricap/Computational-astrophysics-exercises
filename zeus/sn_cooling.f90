@@ -29,7 +29,7 @@ real*8 :: divV(N)
 real*8 :: EIN, Rs, Rshock, ts, te, Ecin, Eter, Etot, Lx
 real*8 :: dtmin, tmax, t, C2, gam, Cv, k, t1, t2, t3, tcontR, tcontT, LumX, cfl, d0
 real*8 :: SedLaw !Costante per la legge di Sedov
-integer :: sdr, Num, stamp, ncicli, index, j, posmax
+integer*8 :: sdr, Num, stamp, ncicli, index, j, posmax
 real*8, EXTERNAL :: Cool
 character (len = *), parameter :: results="resultssncool"
 character (len = *), parameter :: dat=".dat"
@@ -122,7 +122,7 @@ end if
  gam=5./3.
  cv=1.99d8    !! warning: this is right for gam = 5/3 !!
  
- tmax=1
+ tmax=1.2
  t=0.
  c2=3.
  cfl=0.01
@@ -165,23 +165,23 @@ do j=1, index
 		tmax=tmax/yr/1.d4
 		tmax=tmax+10
 	end if
-tmax=tmax*yr*1.d4
+ tmax=tmax*yr*1.d4
         ncicli=0
 		open(100, file='Coolingf.dat')		
 	
-do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
+ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 	Eter=0
 	Ecin=0
 	Etot=0	
 	Lx=0
         ncicli=ncicli+1
-!!        if(ncicli.gt.20000) goto 1111
+ !!        if(ncicli.gt.20000) goto 1111
 
 	do i=1, N        !! not needed for the shock tube test !!
 		P(i)=(gam-1.)*e(i)
 	end do
 	CALL BCb(p)
-!CALCOLO DTMIN
+ !CALCOLO DTMIN
 		
 		!p=(gam-1.)*e
 		Temp=e/(cv*d)
@@ -200,8 +200,8 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 		
 		
 
-!SOURCE STEP
-!SUBSTEP I: AGGIORNAMENTO DELLA VELOCITÀ PER GRADIENTE DI P
+ !SOURCE STEP
+ !SUBSTEP I: AGGIORNAMENTO DELLA VELOCITÀ PER GRADIENTE DI P
 
 	do i=2, N-1
 		v(i)=v(i)-dtmin*2.*(P(i)-P(i-1))/((d(i)+d(i-1))*dxb(i))	
@@ -209,7 +209,7 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 	CALL BCa(v, sdr)
 
 
-!CALCOLO Q
+ !CALCOLO Q
 	do i=2, N-1
 		if ((v(i+1)-v(i))<0.) then
 			q(i)=C2*d(i)*(v(i+1)-v(i))**2
@@ -219,7 +219,7 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 	end do
 	CALL BCb(q)
 
-!SUBSTEP II: AGGIORNAMENTO PER VISCOSITÀ ARTIFICIALE
+ !SUBSTEP II: AGGIORNAMENTO PER VISCOSITÀ ARTIFICIALE
 
 	do i=2, N-1
 		v(i)=v(i)-dtmin*2.*(q(i)-q(i-1))/((d(i)+d(i-1))*dxb(i))
@@ -231,7 +231,7 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 	end do
 	CALL BCb(e)
 
-!SUBSTEP III: AGGIORNAMENTO PER RISCALDAMENTO DA COMPRESSIONE
+ !SUBSTEP III: AGGIORNAMENTO PER RISCALDAMENTO DA COMPRESSIONE
 	do i=2,N-1
 		divV(i)=(g2a(i+1)*g31a(i+1)*v(i+1)-g2a(i)*g31a(i)*v(i))/dvl1a(i)
 	end do
@@ -242,7 +242,7 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 	end do
 	CALL BCb(e)
 
-!!  Here update T when needed (not needed for the shock tube)
+ !!  Here update T when needed (not needed for the shock tube)
 	do i=2, N-1
 		e(i)=e(i)-dtmin*(d(i)/d0)**2*Cool(Temp(i))
 		Temp(i)=max(e(i)/(cv*d(i)), 1.d4)
@@ -254,7 +254,7 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 	CALL BCb(Temp)
 	CALL BCb(p)
 
-!!!!!!TRANSPORT STEP (use Upwind first order only)
+ !!!!!!TRANSPORT STEP (use Upwind first order only)
 
 	do i=2, N-1       !! here define the momentum density
 		s(i)=0.5*(d(i)+d(i-1))*v(i)  !! this is at "i" !!
@@ -262,7 +262,7 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 
 	CALL BCa(s, sdr)
 
-!AGGIORNAMENTO DENSITÀ
+ !AGGIORNAMENTO DENSITÀ
 
 	do i=2, N-1       !! here select the value of the density at the interface "i"
 		if (v(i)>0.) then
@@ -278,7 +278,7 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 		F1(i)=dstar(i)*v(i)*g2a(i)*g31a(i)    !! at i !!	
 	end do
 
-!AGGIORNAMENTO ENERGIA
+ !AGGIORNAMENTO ENERGIA
 
 	do i=2, N-1
 		M(i)=dstar(i)*v(i)
@@ -316,7 +316,7 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 	
 
 
-!AGGIORNAMENTO MOMENTO 
+ !AGGIORNAMENTO MOMENTO 
 
 	do i=2, N-1
 		if ((v(i-1)+v(i))*0.5>0) then
@@ -344,7 +344,7 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 
 	CALL BCa(v, sdr)
 	
-!Check energy conservation
+ !Check energy conservation
 	do i=2, N
 		Eter=(Eter+e(i)*(4./3.)*pi*(xa(i)**3-xa(i-1)**3))
 		Ecin=(Ecin+0.5*0.5*0.5*(4./3.)*pi*(xa(i)**3-xa(i-1)**3)*d(i)*(v(i)+v(i-1))**2)
@@ -356,19 +356,19 @@ do while (t<tmax)      !!!! HERE STARTS THE TIME INTEGRATION !!!!!
 	end do
 	Eter=Eter-EIN
 	Etot=Ecin+Eter
-if (t>Num*yr .and. t<=1d3*yr) then
-write(90, 2003) t/yr, Lx
-Num=Num+100
-end if
-if (t>te*1.d3*yr) then
+ if (t>Num*yr .and. t<=1d3*yr) then
+ write(90, 2003) t/yr, Lx
+ Num=Num+100
+ end if
+ if (t>te*1.d3*yr) then
 
   write(80, 2002) t/yr, Etot/E0, Eter/E0, Ecin/E0
 	
   write(90, 2003) t/yr, Lx
 
-te=te+1
-end if
-!Sedov law	
+ te=te+1
+ end if
+ !Sedov law	
 
 	if (t>ts*1.d3*yr) then
 		maxpos=maxloc(d)
@@ -382,28 +382,17 @@ end if
 	write(70, 2001)t/yr, Rshock/cmpc, Rs/cmpc
 	
 	
-enddo  
-do i=1, N
+ enddo  
+ do i=1, N
 	write(100, 2004) Cool(Temp(i)), Temp(i)
-end do
-2004 format(2(1pe12.4)) !! here the "do while" ends !!
-close(100)
-if (sdr==0) then
-open(20,file='resultscool.dat')
-
-do i=1,N  !! write the results in the file "results.dat"
-	write (20,1000) xa(i),xb(i),d(i)/d0,v(i),e(i)/d(i),p(i), s(i)
-	
-end do
-
-1000 format(7(1pe12.4))
-
-close(20)
-end if
-write (ntime,fmt) j
-filename=results//trim(ntime)//dat
-filename=trim(filename)
-if (sdr==1) then
+ end do
+ 2004 format(2(1pe12.4)) !! here the "do while" ends !!
+ close(100)
+ 
+ write (ntime,fmt) j
+ filename=results//trim(ntime)//dat
+ filename=trim(filename)
+ 
 	open(30,file=filename)
 	
 	do i=1,N  !! write the results in the file "results.dat"
@@ -412,7 +401,7 @@ if (sdr==1) then
 	2000 format(7(1pe12.4))
 	
 	close(30)
-	end if
+	
 
 
 enddo
@@ -429,10 +418,10 @@ SUBROUTINE BCa(z1, coord) !corrette BC per velocità e momento (riflessione)
 USE DATA
 IMPLICIT NONE
 real*8, dimension (N) :: z1
-integer :: coord
+integer*8 :: coord
 if (coord==0) then
 	z1(1)=z1(2)       !! ouflow !!
-z1(N)=z1(N-1)
+    z1(N)=z1(N-1)
 end if
 if (coord == 1) then
 	z1(2)=0.

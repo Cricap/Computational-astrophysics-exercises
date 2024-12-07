@@ -21,9 +21,9 @@
 \maketitle
 
 \section*{Introduction}\label{intro}
-Supernova explosions are the main responsibles of the stellar feedback in the ISM. They produce a rapid ejection of large quantities of gas in the ISM. The process last a few seconds, with the velocity of the ejected mass being of the order of $10^{3}$\textemdash$10^{4}$ km/s and provides the ISM with an energy of $E\sim 10^{51}$ erg. Due to the high velocities of the ejecta, which are supersonic, causes the quick (a few hundred years) formation of a shock, which expansion generates a roughly spherical shell of shocked ISM: this shell and its interior are called a supernova remnant (SNR). 
-The shock propagation is described by the so-called Sedov solution, with the shock radius increasing with time $R_{shock}\propto t^{2/5}$. Understanding this process is of vital importance in the evolution of the ISM in galaxies, but it's also relevant for AGN feedback process. 
-For a more detailed discussion on supernovae, please refer to \cite[Sec. 8.7]{cimatti}.\\
+Supernova explosions are the main responsibles of the stellar feedback in the ISM. They produce a rapid ejection of large quantities of gas in the ISM. The process last a few seconds, with the velocity of the ejected mass being of the order of $10^{3}$\textemdash$10^{4}$ km/s, and it provides the ISM with an energy of $E\sim 10^{51}$ erg. Due to the high velocities of the ejecta, which are supersonic, it causes the quick (a few hundred years) formation of a shock, which expansion generates a roughly spherical shell of shocked ISM: this shell and its interior are called a supernova remnant (SNR). 
+The shock propagation is described by the so-called Sedov solution, with the shock radius increasing with time as $R_{shock}\propto t^{2/5}$. Understanding this process is of vital importance in the evolution of the ISM in galaxies, but it's also relevant for AGN feedback process. 
+For a more detailed discussion on supernovae, please refer to Cimatti et al.\cite[Sec. 8.7]{cimatti}.\\
 In this project, we numerically study the time evolution of a SNR with a simplified model that doesn't take into account radiative losses (so our ISM is uniform,  we have no stellar winds before the explosion, we have no thermal conduction, etc.) by using a hydrocode for the 1D numerical integration of Euler equations. We developed it using Fortran90, while we used gnuplot for the plots.
 \section{1D Hydrocode}
 The code we use is based on the ZEUS code by J. Stone and M. Norman (see \cite{stone} for more details), and it's an hydrocode for the 1D numerical integration of Euler equations.
@@ -44,7 +44,7 @@ Calling a the first grid and b the second one, we define:
 \begin{equation*}
 	dx_a(j)=x_{j+1}-x_{j} \qquad \text{and} \qquad dx_b(j)=x_{j+1/2}-x_{j-1/2}.
 \end{equation*}
-We can also use either Cartesian or spherical coordinates, which give us for the volume elements $\Delta x$ and $\Delta x^3/3$ respectively.\\
+We can also use either Cartesian or spherical coordinates, which give us for the volume elements $\Delta x$ and $\Delta r^3/3$ respectively.\\
 Since we are dealing with shocks, we need to add a dissipation term, namely an \textit{artificial viscosity} $q$, which mimics the real physical viscosity, given by:
 \begin{equation}
 	q=
@@ -53,7 +53,7 @@ Since we are dealing with shocks, we need to add a dissipation term, namely an \
 		0 \quad &\text{otherwise},
 	\end{cases}
 \end{equation} 
-with $Q=const$. The artificial viscosity is added to the pressure in the hydro equations, see \cite{vonneuman} for further information.\\
+with $Q=const$. The artificial viscosity is added to the pressure in the hydro equations, see Von Neumann et al.\cite{vonneuman} for further information.\\
 After setting the initial conditions, we can start the time integration, where at the beginning of each cycle we have to compute the timestep $\Delta t$. The latter has to satisfy the Courant-Friedrichs-Lewy (CFL) condition for stability, so we set $\Delta t$ as:
 \begin{equation}\label{timeeq}
 	\Delta t=C\min_{j}{\frac{x_{j+1/2}-x_{j-1/2}}{\abs{v}+c_{s,j}}} \qquad C\in \left]0,1\right[,
@@ -94,7 +94,7 @@ The transport terms (which correspond to the second terms in Eq.\eqref{eoc}-\eqr
 \end{equation}
 We need to do this because the other variables are updated using the so-called \textit{consistent advection} (see \cite[Sec. 4.4]{stone}), which improves the local conservation. \\
 \paragraph{}
-	The last part of the code concerns the boundary conditions, which depend on the chosen system of coordinates and the used grid. For the variables centered on half-integers we have the same conditions for both Cartesian and spherical coordinates: denoting the variable as $y$, we have that $y_1=y_2$ and $y_{j_{max}}=y_{j_{max}-1}$. These boundary conditions are for traditional outflows, and we apply them at quantities centered on integers in Cartesian coordinates as well. For quantities using grid A in spherical coordinates we need the following BCs: $y_2=0$, $y_1=y_3$ (reflection), and $y_{j_{max}}=y_{j_{max}-1}$.
+	The last part of the code concerns the boundary conditions, which depend on the chosen system of coordinates and the used grid. For the variables centered on half-integers we have the same conditions for both Cartesian and spherical coordinates: denoting the variable as $y$, we have that $y_1=y_2$ and $y_{j_{max}}=y_{j_{max}-1}$. These boundary conditions are for traditional outflows, and we apply them at quantities centered on integers in Cartesian coordinates as well. For quantities using grid A in spherical coordinates we need the following BCs: $y_2=0$, $y_1=-y_3$ (reflection), and $y_{j_{max}}=y_{j_{max}-1}$.
 
 
 
@@ -105,9 +105,8 @@ We choose $Q=3.0$ and $C=0.5$. We then proceed to carry on different tests:
 	\item spherical shock tube in spherical coordinates with $0\le r \le 2$, $\gamma=1.4$ and $t_{max}=0.5$. Our initial conditions are $\rho=1.0$, $p=1.0$, and $v=0$ if $r\le 1$, otherwise we have $\rho=0.125$, $p=0.1$, and $v=0$. The results are plotted in Fig. \ref{fig:spheshock100} and \ref{fig:spheshock1000}, respectively for a grid with 100 and 1000 points.
 	\item strong shock tube in Cartesian coordinates with $0\le x \le 1$, $\gamma=5/3$ and $t_{max}=2$. Our initial conditions are $\rho=100$, $p=0.67$, and $v=0$ if $x\le 0.5$, otherwise we have $\rho=1$, $p=0.67\times 10^{-7}$, and $v=0$. The results are plotted in Fig. \ref{fig:strongshock} for a grid with 1000 points.
 \end{itemize}
-While we do not plot the analytical solution, the latter can be found in \cite{stone} for the Sod shock tube, in \cite{omang} for the spherical one and in \cite{hawley} for the strong one. \\
+While we do not plot the analytical solution, the latter can be found in Stone et al.\cite{stone} for the Sod shock tube, in Omang et al.\cite{omang} for the spherical one and in Hawley et al.\cite{hawley} for the strong one. \\
 We can see how using 1000 points instead of 100 make the shock and contact discontinuites less smoothened out, thus giving us a better representation of the various regions of the flow (namely the unperturbed medium, the rarefaction wave, the contact discontinuity and the shock).
-\textcolor{red}{He then writes about something i didn't do}
 
 
 \begin{figure}[H]
@@ -169,7 +168,7 @@ where $n$ is the number density of the gas particles, and $\Lambda(T)$ is the co
 After, the shell continues to expand pushed by the hot, overpressurized bubble; at first, the radius grows as $R_s\propto t^{2/7}$ by adiabatic expansion, then, when the bubble radiates its energy away, the shell expands by momentum conservation, with $R_s\propto t^{1/4}$.
 
 \subsection{The simulation}
-We use the usual hydrocode to integrate EUler equations in spherical coordinates. The grid extends from $0$ up to $70$ pc, with $500$ points uniformly spaced. In order to properly deal with the boundary conditions described in Sec.\ref{descrip}, we assign a negative value to the first grid point, i.e. $r_1=-\Delta r$, $r_2=0$, $r_3=\Delta r$, and so on, which makes the point corresponding to $j=3$ the first active point. 
+We use the usual hydrocode to integrate Euler equations in spherical coordinates. The grid extends from $0$ up to $70$ pc, with $500$ points uniformly spaced. In order to properly deal with the boundary conditions described in Sec.\ref{descrip}, we assign a negative value to the first grid point, i.e. $r_1=-\Delta r$, $r_2=0$, $r_3=\Delta r$, and so on, which makes the point corresponding to $j=3$ the first active point. 
 We assume as ISM the ionized Galactic one, so we use its typical values for the initial density $\rho_0$, and temperature $T_0$. In particular, we have $\rho_0=2.0\times 10^{-24}$ g/cm$^{3}$, and $T_0=10^4$ K. Since we're dealing with ionized gas, we have $\gamma =5/3$, and $c_v=2.0\times 10^{51}$ erg$\cdot\,$cm$^{-1}\cdot\,$K$^{-1}$, where $c_v$ is the specific heat capacity at constant volume. We also set out initial velocity to zero, while we derive $p_0$ and $\epsilon_0$ using the relations $\epsilon_0=c_v\rho_0T_0$ and Eq.\eqref{eqstate}. We take $E_0=10^{51}$ erg/s as a value for the energy injected by the SN in the form of thermal energy. Since we assumed this gets injected into a small volume, we consider it to go into the first two active grid points, which numerically means having to change the energy of points 2 and 3 to:
 \begin{equation}
 	\epsilon_{2+1/2}=\epsilon_{3+1/2}=\frac{E_0}{\frac{4}{3}\pi r_4^3},
@@ -190,7 +189,7 @@ which we plot in Fig.\ref{fig:coolf}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7 \linewidth]{coolfunction.pdf}
-	\caption{The cooling function defined in Eq.\eqref{coolfu}, plotted for}
+	\caption{The cooling function defined in Eq.\eqref{coolfu}, plotted for $T<10^9$ K.}
 	\label{fig:coolf}
 \end{figure}
 To implement radiative cooling we transfor Eq.\eqref{dedt} into the following FDE:
